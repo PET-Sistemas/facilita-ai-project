@@ -1,0 +1,10 @@
+/home/bielzin/Área de trabalho/code/getpet/src/main/java/com/UFMSPetSistemas/getpet/controller/UsuarioController.java
+/home/bielzin/Área de trabalho/code/getpet/src/main/java/com/UFMSPetSistemas/getpet/GetpetApplication.java
+/home/bielzin/Área de trabalho/code/getpet/src/main/java/com/UFMSPetSistemas/getpet/model/entities/UsuarioFornecedor.java
+/home/bielzin/Área de trabalho/code/getpet/src/main/java/com/UFMSPetSistemas/getpet/model/entities/UsuarioServico.java
+/home/bielzin/Área de trabalho/code/getpet/src/main/java/com/UFMSPetSistemas/getpet/model/repository/UsuarioRepository.java
+/home/bielzin/Área de trabalho/code/getpet/src/main/java/com/UFMSPetSistemas/getpet/model/entities/Usuario.java
+/home/bielzin/Área de trabalho/code/getpet/src/main/java/com/UFMSPetSistemas/getpet/model/entities/Categoria.java
+/home/bielzin/Área de trabalho/code/getpet/src/main/java/com/UFMSPetSistemas/getpet/model/entities/UsuarioConsumidor.java
+/home/bielzin/Área de trabalho/code/getpet/src/main/java/com/UFMSPetSistemas/getpet/model/entities/PrestacaoServico.java
+/home/bielzin/Área de trabalho/code/getpet/src/main/java/com/UFMSPetSistemas/getpet/model/entities/TipoServico.java

@@ -1,0 +1,15 @@
+{
+    "name": "João da Silva",
+    "birthdate": "1990-05-15",
+    "phone": "(11) 98765-4321",
+    "state": "SP",
+    "stars": 4,
+    "city": "São Paulo",
+    "email": "joao.silva@example.com",
+    "password": "senha123",
+    "confirmation": "senha123",
+    "sellProduct": true,
+     "profilePicture": "https://via.placeholder.com/800x400"
+  }
+
+  
