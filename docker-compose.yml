@@ -10,7 +10,7 @@ services:
       - app-network
   api:
     build:
-      context: ./back-facilita_ai
+      context: ./getpet
     container_name: getpet_api
     environment:
       DATABASE_HOST: db
