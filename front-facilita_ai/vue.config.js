@@ -4,10 +4,10 @@ module.exports = defineConfig({
 })
 module.exports = {
   devServer: {
-    port: 3000,
+    port: 3001,
     proxy: {
       '/api': {
-        target: 'http://localhost:3000',
+        target: 'http://151.106.108.50:8080',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''), // Remove '/api' ao redirecionar
       },
