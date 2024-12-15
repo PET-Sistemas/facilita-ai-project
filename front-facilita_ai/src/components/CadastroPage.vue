@@ -137,17 +137,18 @@ export default {
       };
 
       try {
-        // Substitua a URL abaixo pela URL do seu backend
-        const response = await axios.post('http://151.106.108.50:8080/usuario', userData);
-
-        if (response.status === 200) {
-          alert('Cadastro realizado com sucesso!');
-        } else {
-          alert('Erro ao cadastrar usuário.');
-        }
+          const response = await axios.post('http://localhost:8080/api/usuario', userData);
+          console.log('Resposta completa:', response); // Adicione este log
+          
+          if (response.status === 200 || response.status === 201) {
+              alert('Cadastro realizado com sucesso!');
+              console.log('Dados salvos:', response.data); // Adicione este log
+          } else {
+              alert('Erro ao cadastrar usuário.');
+          }
       } catch (error) {
-        console.error('Erro ao cadastrar usuário:', error);
-        alert('Ocorreu um erro ao cadastrar o usuário.');
+          console.error('Erro detalhado:', error.response); // Modificado para mostrar mais detalhes
+          alert('Ocorreu um erro ao cadastrar o usuário.');
       }
     }
   }
