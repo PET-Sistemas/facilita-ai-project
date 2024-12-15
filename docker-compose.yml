@@ -31,7 +31,7 @@ services:
         dockerfile: Dockerfile
       container_name: getpet_front
       ports:
-        - "3000:3000"  # Mudando para porta 3000 que é padrão do Vite
+        - "3001:3001"  # Mudando para porta 3000 que é padrão do Vite
       volumes:
         - ./front-facilita_ai:/usr/src/app
         - /usr/src/app/node_modules
