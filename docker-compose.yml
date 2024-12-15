@@ -20,8 +20,6 @@ services:
       DATABASE_NAME: getpet
     networks:
       - app-network
-    ports:
-      - "8080:8080"
     depends_on:
       - db
 
@@ -30,15 +28,28 @@ services:
         context: ./front-facilita_ai
         dockerfile: Dockerfile
       container_name: getpet_front
-      ports:
-        - "3001:3001"  # Mudando para porta 3000 que é padrão do Vite
       volumes:
         - ./front-facilita_ai:/usr/src/app
         - /usr/src/app/node_modules
       environment:
-        - VITE_API_URL=http://getpet_api:8080  # Adicionando URL da API
+        - VITE_API_URL=/api
+      networks:
+        - app-network
       depends_on:
         - api
+
+  nginx:
+    image: nginx:alpine
+    container_name: getpet_nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - app-network
+    depends_on:
+      - api
+      - frontend
 
 networks:
   app-network:
