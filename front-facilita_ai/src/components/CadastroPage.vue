@@ -137,7 +137,7 @@ export default {
       };
 
       try {
-          const response = await axios.post('http://localhost:8080/api/usuario', userData);
+          const response = await axios.post('http://localhost/api/usuario', userData);
           console.log('Resposta completa:', response); // Adicione este log
           
           if (response.status === 200 || response.status === 201) {
