@@ -7,6 +7,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
+@RequestMapping("/api")
 public class UsuarioController {
     UsuarioRepository repo;
 
@@ -17,8 +18,16 @@ public class UsuarioController {
     //@RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     @PostMapping(path = "/usuario")
     public Usuario insertColaborador(@RequestBody Usuario novoColaborador){
-        System.out.println(novoColaborador);
-        return this.repo.save(novoColaborador);
+        System.out.println("Dados recebidos: " + novoColaborador);
+        try {
+            Usuario usuarioSalvo = this.repo.save(novoColaborador);
+            System.out.println("Usuário salvo: " + usuarioSalvo);
+            return usuarioSalvo;
+        } catch (Exception e) {
+            System.err.println("Erro ao salvar: " + e.getMessage());
+            e.printStackTrace();
+            throw e;
+        }
     }
 
     @GetMapping(path = "/usuario")
