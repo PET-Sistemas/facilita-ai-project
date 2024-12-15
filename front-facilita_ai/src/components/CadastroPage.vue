@@ -138,7 +138,7 @@ export default {
 
       try {
         // Substitua a URL abaixo pela URL do seu backend
-        const response = await axios.post('http://localhost:8080/usuario', userData);
+        const response = await axios.post('http://151.106.108.50:8080/usuario', userData);
 
         if (response.status === 200) {
           alert('Cadastro realizado com sucesso!');
