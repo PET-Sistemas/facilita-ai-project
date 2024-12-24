@@ -1,17 +1,82 @@
 package com.UFMSPetSistemas.getpet.model.entities;
 
+import jakarta.persistence.*;
 import java.util.Collection;
 
+@Entity
+@Table(name = "tipo_servico")
 public class TipoServico {
 
-	private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
-	private String nomeServico;
+    @Column(name = "nome_servico", nullable = false, length = 100)
+    private String nomeServico;
 
-	private TipoServico tipoServico;
+    @ManyToOne
+    @JoinColumn(name = "tipo_servico_pai_id", referencedColumnName = "id")
+    private TipoServico tipoServico;
 
-	private Collection<UsuarioFornecedor> usuarioServico;
+    @OneToMany(mappedBy = "tipoServico")
+    private Collection<UsuarioFornecedor> usuarioServico;
 
-	private Categoria categoria;
+    @ManyToOne
+    @JoinColumn(name = "categoria_id", referencedColumnName = "id")
+    private Categoria categoria;
+
+    // Getters and setters
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNomeServico() {
+        return nomeServico;
+    }
+
+    public void setNomeServico(String nomeServico) {
+        this.nomeServico = nomeServico;
+    }
+
+    public TipoServico getTipoServico() {
+        return tipoServico;
+    }
+
+    public void setTipoServico(TipoServico tipoServico) {
+        this.tipoServico = tipoServico;
+    }
+
+    public Collection<UsuarioFornecedor> getUsuarioServico() {
+        return usuarioServico;
+    }
+
+    public void setUsuarioServico(Collection<UsuarioFornecedor> usuarioServico) {
+        this.usuarioServico = usuarioServico;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		TipoServico that = (TipoServico) o;
+		return id == that.id;
+	}
+
+	@Override
+	public int hashCode() {
+		return Integer.hashCode(id);
+	}
 
 }
