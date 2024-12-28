@@ -24,13 +24,14 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<String> verificaLogin(@RequestBody Usuario usuarioReq) {
         List<Usuario> usuarios = repo.findAll();
-    
+        Usuario req = repo.findByEmail(usuarioReq.getEmail());
+
         if (usuarios.isEmpty()) { 
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Lista de usuários vazia");
         }
         
         for (Usuario usuario : usuarios) {
-            if (usuario.getId() == usuarioReq.getId() && usuario.getSenha().equals(usuarioReq.getSenha())) {
+            if (usuario.getEmail() == req.getEmail() && usuario.getSenha().equals(req.getSenha())) {
                 return ResponseEntity.ok("Usuário autorizado.");
             }
         }
