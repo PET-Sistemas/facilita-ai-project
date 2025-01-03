@@ -18,11 +18,12 @@ public class TipoServico {
     @JoinColumn(name = "tipo_servico_pai_id", referencedColumnName = "id")
     private TipoServico tipoServico;
 
-    @OneToMany(mappedBy = "tipoServico")
+    @ManyToOne
+    @JoinColumn(name = "usuario_fornecedor_id", referencedColumnName = "id")
     private Collection<UsuarioFornecedor> usuarioServico;
 
     @ManyToOne
-    @JoinColumn(name = "categoria_id", referencedColumnName = "id")
+    @JoinColumn(name = "categoria_id", referencedColumnName = "codigo")
     private Categoria categoria;
 
     // Getters and setters
