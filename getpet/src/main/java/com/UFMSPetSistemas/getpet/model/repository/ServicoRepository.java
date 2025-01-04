@@ -6,9 +6,6 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ServicoRepository extends JpaRepository<PrestacaoServico, Long>{
-    public List<PrestacaoServico> findByTipoServico(TipoServico tipoServico);
 
     public List<PrestacaoServico> findByValorServico(Double ValorServico);
-
-    public List<PrestacaoServico> findByPrazo(Integer prazo);
 }

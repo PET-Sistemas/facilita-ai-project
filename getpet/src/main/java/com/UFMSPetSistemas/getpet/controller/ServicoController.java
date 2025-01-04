@@ -4,6 +4,7 @@ package com.UFMSPetSistemas.getpet.controller;
 
 import com.UFMSPetSistemas.getpet.model.entities.PrestacaoServico;
 import com.UFMSPetSistemas.getpet.model.entities.Usuario;
+import com.UFMSPetSistemas.getpet.model.repository.PrestacaoServicoRepository;
 import com.UFMSPetSistemas.getpet.model.repository.ServicoRepository;
 import com.UFMSPetSistemas.getpet.model.repository.TipoServicoRepository;
 import com.UFMSPetSistemas.getpet.model.repository.UsuarioRepository;
@@ -16,13 +17,20 @@ import java.util.List;
 public class ServicoController {
 
 
-    private final ServicoRepository repo; // Criar um repositório específico para serviço
-    private final TipoServicoRepository tipoServicoRepository;
+    private final ServicoRepository repo;
+    private final PrestacaoServicoRepository prestrepo;
 
 
-    public ServicoController(ServicoRepository repo) {
+    public ServicoController(ServicoRepository repo, PrestacaoServicoRepository prestrepo) {
         this.repo = repo;
+        this.prestrepo = prestrepo;
     }
+
+    @GetMapping(path = "/servico/{avaliacao}")
+    public List<PrestacaoServico> getServicosByAvaliacao(@PathVariable int avaliacao) {
+        return this.prestrepo.findByAvaliacaoGreaterThanEqual(avaliacao);
+    }
+
 
 
     @GetMapping(path = "/servico/{id}")
@@ -48,14 +56,6 @@ public class ServicoController {
         }
         this.repo.deleteById(id);
     }
-
-
-    @GetMapping(path = "/servico/tipo/{tipo}")
-    public List<PrestacaoServico> getServicoByTipo(@PathVariable String categoria) {
-        // fazer find categoria by name, e retornar um tipo de servico pela categoria com o método findByTipoServico
-        return this.repo.findByTipoServico(tipo);
-    }
-
 
     @GetMapping(path = "/servico/preco/{preco}")
     public List<PrestacaoServico> getServicoByPreco(@PathVariable Double preco) {
