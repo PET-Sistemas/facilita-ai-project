@@ -2,6 +2,8 @@ package com.UFMSPetSistemas.getpet.model.entities;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class Servico {
 
@@ -15,16 +17,19 @@ public class Servico {
 
     private double valor;
 
-   /* Retirar anotação ao criar a classe Categoria
+
     @ManyToOne
     @JoinColumn(name = "categoria_id", nullable = false)
     private Categoria categoria;
 
-    Retirar anotação ao criar a classe Usuario
+
     @ManyToOne
     @JoinColumn(name = "usuario_id", nullable = false)
     private Usuario usuario;
-    */
+
+    @OneToMany(mappedBy = "servico", cascade = CascadeType.ALL)
+    private List<PrestacaoServico> avaliacoes; // Relacionamento "um para muitos"
+
     public Long getId() {
         return id;
     }
@@ -57,7 +62,14 @@ public class Servico {
         this.valor = valor;
     }
 
-   /* public Categoria getCategoria() {
+    public List<PrestacaoServico> getAvaliacoes() {
+        return avaliacoes;
+    }
+
+    public void setAvaliacoes(List<PrestacaoServico> avaliacoes) {
+        this.avaliacoes = avaliacoes;
+    }
+    public Categoria getCategoria() {
         return categoria;
     }
 
@@ -71,6 +83,6 @@ public class Servico {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
-    } */
+    }
 }
 
