@@ -4,6 +4,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.persistence.*;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -34,6 +35,9 @@ public class Usuario {
 	private String telefone;
 
 	private String senha;
+
+	@OneToMany(mappedBy = "usuarioConsumidor", cascade = CascadeType.ALL)
+	private List<PrestacaoServico> servicosConsumidos; // Relacionamento "um para muitos"
 
 	public Long getId() {
 		return id;
@@ -105,6 +109,14 @@ public class Usuario {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public List<PrestacaoServico> getServicosConsumidos() {
+		return servicosConsumidos;
+	}
+
+	public void setServicosConsumidos(List<PrestacaoServico> servicosConsumidos) {
+		this.servicosConsumidos = servicosConsumidos;
 	}
 
 	@Override
