@@ -45,7 +45,7 @@ public class UsuarioController {
     public List<Usuario> buscarPorNome(@RequestParam String nome){
         return this
                 .repo
-                .findByNome(nome);
+                .findByNomeContaining(nome);
     }
 
     @PutMapping //api/usuario?id={var}
@@ -64,6 +64,6 @@ public class UsuarioController {
     public List<Usuario> buscarPorEndereco(@RequestParam String endereco){
         return this
                 .repo
-                .findByEndereco(endereco);
+                .findByEnderecoContaining(endereco);
     }
 }

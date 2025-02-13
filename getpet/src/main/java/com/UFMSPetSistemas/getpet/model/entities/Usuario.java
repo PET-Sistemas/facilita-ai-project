@@ -1,9 +1,12 @@
 package com.UFMSPetSistemas.getpet.model.entities;
 
+import com.UFMSPetSistemas.getpet.model.entities.Servico;
+import com.UFMSPetSistemas.getpet.model.entities.PrestacaoServico;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.persistence.*;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -35,6 +38,15 @@ public class Usuario {
 
 	private String senha;
 
+    @OneToMany(mappedBy = "user_prestador_id", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Servico> servicos;
+
+	@OneToMany(mappedBy = "user_prestador_id", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<PrestacaoServico> servicosPrestados;
+
+	@OneToMany(mappedBy = "user_contratante_id", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<PrestacaoServico> servicosContratados;
+	
 	public Long getId() {
 		return id;
 	}
