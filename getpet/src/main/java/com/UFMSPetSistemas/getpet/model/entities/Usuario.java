@@ -1,5 +1,7 @@
 package com.UFMSPetSistemas.getpet.model.entities;
 
+import com.UFMSPetSistemas.getpet.model.entities.Servico;
+import com.UFMSPetSistemas.getpet.model.entities.PrestacaoServico;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.persistence.*;
