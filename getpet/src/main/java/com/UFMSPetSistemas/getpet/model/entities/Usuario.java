@@ -36,8 +36,14 @@ public class Usuario {
 
 	private String senha;
 
-	@OneToMany(mappedBy = "usuarioConsumidor", cascade = CascadeType.ALL)
-	private List<PrestacaoServico> servicosConsumidos; // Relacionamento "um para muitos"
+	@OneToMany(mappedBy = "user_prestador_id", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Servico> servicos;
+
+	@OneToMany(mappedBy = "user_prestador_id", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<PrestacaoServico> servicosPrestados;
+
+	@OneToMany(mappedBy = "user_contratante_id", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<PrestacaoServico> servicosContratados;
 
 	public Long getId() {
 		return id;
