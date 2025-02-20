@@ -2,11 +2,8 @@ package com.UFMSPetSistemas.getpet.controller;
 
 import com.UFMSPetSistemas.getpet.model.entities.Usuario;
 import com.UFMSPetSistemas.getpet.model.repository.UsuarioRepository;
-
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
-
 
 @RestController
 @CrossOrigin

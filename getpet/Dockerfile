@@ -1,9 +1,13 @@
 # Etapa de Build
 FROM eclipse-temurin:21-jdk-alpine as builder
 WORKDIR /app
-COPY . .  
+
+# Instala dependências necessárias para o Maven Wrapper funcionar
+RUN apk add --no-cache bash
+
+COPY . .
 RUN chmod +x ./mvnw
-RUN ./mvnw package -DskipTests
+RUN ./mvnw clean package -DskipTests
 
 # Etapa de Execução
 FROM eclipse-temurin:21-jre-alpine

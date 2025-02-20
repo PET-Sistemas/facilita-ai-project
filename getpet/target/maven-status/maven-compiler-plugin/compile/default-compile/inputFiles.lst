@@ -1,10 +1,12 @@
-/home/bielzin/Área de trabalho/code/getpet/src/main/java/com/UFMSPetSistemas/getpet/controller/UsuarioController.java
-/home/bielzin/Área de trabalho/code/getpet/src/main/java/com/UFMSPetSistemas/getpet/GetpetApplication.java
-/home/bielzin/Área de trabalho/code/getpet/src/main/java/com/UFMSPetSistemas/getpet/model/entities/UsuarioFornecedor.java
-/home/bielzin/Área de trabalho/code/getpet/src/main/java/com/UFMSPetSistemas/getpet/model/entities/UsuarioServico.java
-/home/bielzin/Área de trabalho/code/getpet/src/main/java/com/UFMSPetSistemas/getpet/model/repository/UsuarioRepository.java
-/home/bielzin/Área de trabalho/code/getpet/src/main/java/com/UFMSPetSistemas/getpet/model/entities/Usuario.java
-/home/bielzin/Área de trabalho/code/getpet/src/main/java/com/UFMSPetSistemas/getpet/model/entities/Categoria.java
-/home/bielzin/Área de trabalho/code/getpet/src/main/java/com/UFMSPetSistemas/getpet/model/entities/UsuarioConsumidor.java
-/home/bielzin/Área de trabalho/code/getpet/src/main/java/com/UFMSPetSistemas/getpet/model/entities/PrestacaoServico.java
-/home/bielzin/Área de trabalho/code/getpet/src/main/java/com/UFMSPetSistemas/getpet/model/entities/TipoServico.java
+C:\Dev\facilita-ai-project\getpet\src\main\java\com\UFMSPetSistemas\getpet\model\entities\Servico.java
+C:\Dev\facilita-ai-project\getpet\src\main\java\com\UFMSPetSistemas\getpet\controller\PrestacaoServicoController.java
+C:\Dev\facilita-ai-project\getpet\src\main\java\com\UFMSPetSistemas\getpet\controller\UsuarioController.java
+C:\Dev\facilita-ai-project\getpet\src\main\java\com\UFMSPetSistemas\getpet\model\repository\CategoriaRepository.java
+C:\Dev\facilita-ai-project\getpet\src\main\java\com\UFMSPetSistemas\getpet\model\entities\PrestacaoServico.java
+C:\Dev\facilita-ai-project\getpet\src\main\java\com\UFMSPetSistemas\getpet\controller\ServicoController.java
+C:\Dev\facilita-ai-project\getpet\src\main\java\com\UFMSPetSistemas\getpet\model\repository\ServicoRepository.java
+C:\Dev\facilita-ai-project\getpet\src\main\java\com\UFMSPetSistemas\getpet\model\repository\UsuarioRepository.java
+C:\Dev\facilita-ai-project\getpet\src\main\java\com\UFMSPetSistemas\getpet\GetpetApplication.java
+C:\Dev\facilita-ai-project\getpet\src\main\java\com\UFMSPetSistemas\getpet\model\entities\Categoria.java
+C:\Dev\facilita-ai-project\getpet\src\main\java\com\UFMSPetSistemas\getpet\model\entities\Usuario.java
+C:\Dev\facilita-ai-project\getpet\src\main\java\com\UFMSPetSistemas\getpet\model\repository\PrestacaoServicoRepository.java

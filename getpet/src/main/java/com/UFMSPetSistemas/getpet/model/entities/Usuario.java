@@ -120,11 +120,11 @@ public class Usuario {
 	}
 
 	public List<PrestacaoServico> getServicosConsumidos() {
-		return servicosConsumidos;
+		return servicosContratados;
 	}
 
 	public void setServicosConsumidos(List<PrestacaoServico> servicosConsumidos) {
-		this.servicosConsumidos = servicosConsumidos;
+		this.servicosContratados = servicosConsumidos;
 	}
 
 	@Override
