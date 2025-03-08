@@ -5,8 +5,53 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="98b1ad3b-64e4-4725-a2e2-607fc6f66564" name="Changes" comment="Fix: Remoção de comentarios desnecessarios e formatação de repositorio de usuario pra funcionamento correto de controladora.&#10;Mudança no Dockerfile visando funcionamento correto">
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/getpet/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/getpet/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/getpet/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getpet/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getpet/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getpet/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getpet/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getpet/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getpet/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getpet/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getpet/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getpet/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getpet/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/mvnw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getpet/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/mvnw.cmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getpet/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getpet/src/main/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/src/main/config/WebConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getpet/src/main/java/com/UFMSPetSistemas/getpet/GetpetApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/GetpetApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getpet/src/main/java/com/UFMSPetSistemas/getpet/controller/PrestacaoServicoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/controller/PrestacaoServicoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getpet/src/main/java/com/UFMSPetSistemas/getpet/controller/ServicoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/controller/ServicoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getpet/src/main/java/com/UFMSPetSistemas/getpet/controller/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/controller/UsuarioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getpet/src/main/java/com/UFMSPetSistemas/getpet/model/entities/Categoria.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/model/entities/Categoria.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getpet/src/main/java/com/UFMSPetSistemas/getpet/model/entities/PrestacaoServico.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/model/entities/PrestacaoServico.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getpet/src/main/java/com/UFMSPetSistemas/getpet/model/entities/Servico.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/model/entities/Servico.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getpet/src/main/java/com/UFMSPetSistemas/getpet/model/entities/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/model/entities/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getpet/src/main/java/com/UFMSPetSistemas/getpet/model/repository/CategoriaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/model/repository/CategoriaRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getpet/src/main/java/com/UFMSPetSistemas/getpet/model/repository/PrestacaoServicoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/model/repository/PrestacaoServicoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getpet/src/main/java/com/UFMSPetSistemas/getpet/model/repository/ServicoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/model/repository/ServicoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getpet/src/main/java/com/UFMSPetSistemas/getpet/model/repository/UsuarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/model/repository/UsuarioRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getpet/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getpet/src/test/java/com/UFMSPetSistemas/getpet/GetpetApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/src/test/java/com/UFMSPetSistemas/getpet/GetpetApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getpet/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getpet/target/classes/com/UFMSPetSistemas/getpet/GetpetApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/target/classes/com/UFMSPetSistemas/getpet/GetpetApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getpet/target/classes/com/UFMSPetSistemas/getpet/controller/PrestacaoServicoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/target/classes/com/UFMSPetSistemas/getpet/controller/PrestacaoServicoController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getpet/target/classes/com/UFMSPetSistemas/getpet/controller/ServicoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/target/classes/com/UFMSPetSistemas/getpet/controller/ServicoController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getpet/target/classes/com/UFMSPetSistemas/getpet/controller/UsuarioController.class" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/target/classes/com/UFMSPetSistemas/getpet/controller/UsuarioController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getpet/target/classes/com/UFMSPetSistemas/getpet/model/entities/Categoria.class" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/target/classes/com/UFMSPetSistemas/getpet/model/entities/Categoria.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getpet/target/classes/com/UFMSPetSistemas/getpet/model/entities/PrestacaoServico.class" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/target/classes/com/UFMSPetSistemas/getpet/model/entities/PrestacaoServico.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getpet/target/classes/com/UFMSPetSistemas/getpet/model/entities/Servico.class" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/target/classes/com/UFMSPetSistemas/getpet/model/entities/Servico.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getpet/target/classes/com/UFMSPetSistemas/getpet/model/entities/Usuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/target/classes/com/UFMSPetSistemas/getpet/model/entities/Usuario.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getpet/target/classes/com/UFMSPetSistemas/getpet/model/repository/CategoriaRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/target/classes/com/UFMSPetSistemas/getpet/model/repository/CategoriaRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getpet/target/classes/com/UFMSPetSistemas/getpet/model/repository/PrestacaoServicoRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/target/classes/com/UFMSPetSistemas/getpet/model/repository/PrestacaoServicoRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getpet/target/classes/com/UFMSPetSistemas/getpet/model/repository/ServicoRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/target/classes/com/UFMSPetSistemas/getpet/model/repository/ServicoRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getpet/target/classes/com/UFMSPetSistemas/getpet/model/repository/UsuarioRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/target/classes/com/UFMSPetSistemas/getpet/model/repository/UsuarioRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getpet/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getpet/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getpet/target/test-classes/com/UFMSPetSistemas/getpet/GetpetApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/target/test-classes/com/UFMSPetSistemas/getpet/GetpetApplicationTests.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,11 +126,16 @@
   &quot;keyToString&quot;: {
     &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;Docker.docker-compose.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.localhost:3001.executor&quot;: &quot;Debug&quot;,
     &quot;Notification.DisplayName-DoNotAsk-Database detector&quot;: &quot;Database detector&quot;,
     &quot;Notification.DoNotAsk-Database detector&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;Spring Boot.GetpetApplication.executor&quot;: &quot;Debug&quot;,
+    &quot;Spring Boot.GetpetApplication.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
@@ -94,6 +144,7 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;C:/Users/Caue Moraes/AppData/Roaming/JetBrains/IntelliJIdea2024.3/node/versions/22.14.0/node&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
@@ -103,7 +154,16 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Dev\facilita-ai-project" />
+      <recent name="C:\Dev\facilita-ai-project\getpet" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.GetpetApplication">
+    <configuration name="localhost:3001" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:3001/">
+      <method v="2" />
+    </configuration>
     <configuration name="GetpetApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="openjdk-22" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -113,16 +173,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.localhost:3001" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.24978.46" />
-        <option value="bundled-js-predefined-d6986cc7102b-76f8388c3a79-JavaScript-IU-243.24978.46" />
+        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.25659.59" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.25659.59" />
       </set>
     </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="StructureViewState">
+    <option name="selectedTab" value="Logical" />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="98b1ad3b-64e4-4725-a2e2-607fc6f66564" name="Changes" comment="" />
@@ -158,7 +226,14 @@
       <workItem from="1740003275834" duration="1227000" />
       <workItem from="1740071147275" duration="5539000" />
       <workItem from="1740604742154" duration="17000" />
-      <workItem from="1740606326995" duration="965000" />
+      <workItem from="1740606326995" duration="1888000" />
+      <workItem from="1740608251055" duration="415000" />
+      <workItem from="1740608847369" duration="156000" />
+      <workItem from="1740609008318" duration="22000" />
+      <workItem from="1740609611401" duration="34000" />
+      <workItem from="1740609735139" duration="694000" />
+      <workItem from="1741458453789" duration="400000" />
+      <workItem from="1741458950846" duration="915000" />
     </task>
     <task id="LOCAL-00001" summary="Feat: Criação de repositorio para categoria">
       <option name="closed" value="true" />

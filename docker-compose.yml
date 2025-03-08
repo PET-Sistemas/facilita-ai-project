@@ -1,0 +1,45 @@
+services:
+  db:
+    image: postgres:13
+    container_name: getpet_db
+    environment:
+      POSTGRES_USER: getpet
+      POSTGRES_PASSWORD: getpet
+      POSTGRES_DB: getpet
+    networks:
+      - app-network
+  api:
+    build:
+      context: ./back-facilita_ai
+    container_name: getpet_api
+    environment:
+      DATABASE_HOST: db
+      DATABASE_PORT: 5432
+      DATABASE_USER: getpet
+      DATABASE_PASSWORD: getpet
+      DATABASE_NAME: getpet
+    networks:
+      - app-network
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./front-facilita_ai
+      dockerfile: Dockerfile
+    container_name: getpet_front
+    ports:
+      - "3001:3001"  # Mudando para porta 3000 que é padrão do Vite
+    volumes:
+      - ./front-facilita_ai:/usr/src/app
+      - /usr/src/app/node_modules
+    environment:
+      - VITE_API_URL=http://getpet_api:8080  # Adicionando URL da API
+    depends_on:
+      - api
+
+networks:
+  app-network:
+    driver: bridge
