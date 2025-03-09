@@ -23,11 +23,11 @@ public class Servico {
     private Categoria categoria;
 
     @ManyToOne
-    @JoinColumn(name = "user_prestador_id")
+    @JoinColumn(name = "usuario_prestador_id")
     private Usuario usuario_prestador;
     
     @ManyToOne
-    @JoinColumn(name = "usuario_id")
+    @JoinColumn(name = "usuario_consumidor_id")
     private Usuario usuario_consumidor;
 
     @OneToMany(mappedBy = "servico", cascade = CascadeType.ALL)
