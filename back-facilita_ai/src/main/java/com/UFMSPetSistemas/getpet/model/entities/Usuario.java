@@ -38,13 +38,13 @@ public class Usuario {
 
 	private String senha;
 
-	@OneToMany(mappedBy = "user_prestador_id", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "usuario_prestador", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Servico> servicos;
-
-	@OneToMany(mappedBy = "user_prestador_id", cascade = CascadeType.ALL, orphanRemoval = true)
+	
+	@OneToMany(mappedBy = "usuarioFornecedor", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<PrestacaoServico> servicosPrestados;
-
-	@OneToMany(mappedBy = "user_contratante_id", cascade = CascadeType.ALL, orphanRemoval = true)
+	
+	@OneToMany(mappedBy = "usuarioConsumidor", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<PrestacaoServico> servicosContratados;
 
 	public Long getId() {
@@ -55,6 +55,23 @@ public class Usuario {
 		this.id = id;
 	}
 
+
+	public List<Servico> getServicos() {
+		return servicos;
+	}
+	
+	public void setServicos(List<Servico> servicos) {
+		this.servicos = servicos;
+	}
+	
+	public List<PrestacaoServico> getServicosPrestados() {
+		return servicosPrestados;
+	}
+	
+	public void setServicosPrestados(List<PrestacaoServico> servicosPrestados) {
+		this.servicosPrestados = servicosPrestados;
+	}
+	
 	public String getNomeCompleto() {
 		return nomeCompleto;
 	}
@@ -119,11 +136,11 @@ public class Usuario {
 		this.senha = senha;
 	}
 
-	public List<PrestacaoServico> getServicosConsumidos() {
+	public List<PrestacaoServico> getServicosContratados() {
 		return servicosContratados;
 	}
 
-	public void setServicosConsumidos(List<PrestacaoServico> servicosConsumidos) {
+	public void setServicosContratados(List<PrestacaoServico> servicosConsumidos) {
 		this.servicosContratados = servicosConsumidos;
 	}
 

@@ -20,9 +20,9 @@ public class PrestacaoServico {
     @ManyToOne
     @JoinColumn(name = "usuario_consumidor_id")
     private Usuario usuarioConsumidor;
-
+    
     @ManyToOne
-    @JoinColumn(name = "usuario_fornecedor_id")
+    @JoinColumn(name = "usuario_prestador_id")
     private Usuario usuarioFornecedor;
 
     @ManyToOne
