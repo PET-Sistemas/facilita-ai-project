@@ -16,8 +16,8 @@ public interface ServicoRepository extends JpaRepository<Servico, Long> {
 
     List<Servico> findByValorBetween(double minValor, double maxValor);
 
-    List<Servico> findByUsuarioId(long usuarioId);
-
-    List<Servico> findByUsuarioEndereco(String endereco);
-
+    List<Servico> findByUsuarioPrestadorId(long usuario_prestador_id);
+    
+    List<Servico> findByUsuarioPrestadorEndereco(String endereco);
+    
 }

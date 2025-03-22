@@ -12,7 +12,7 @@ public class UsuarioController {
     private UsuarioRepository repo;
 
     @PostMapping(path = "/")
-    public Usuario cadastrarUsuario(@RequestBody Usuario novoColaborador){
+    public Usuario cadastrarUsuario(@RequestBody Usuario novoColaborador) {
         System.out.println("Dados recebidos: " + novoColaborador);
         try {
             Usuario usuarioSalvo = this.repo.save(novoColaborador);
@@ -26,39 +26,37 @@ public class UsuarioController {
     }
 
     @GetMapping(path = "/todos")
-    public List<Usuario> listarUsuarios(){
+    public List<Usuario> listarUsuarios() {
         return this.repo.findAll();
     }
 
-    @GetMapping //api/usuario?id={var}
-    public Usuario buscarPorId(@RequestParam Long id){
+    @GetMapping(path = "/id") 
+    public Usuario buscarPorId(@RequestParam Long id) {
         return this
                 .repo
                 .findById(id)
                 .orElseThrow(() -> new RuntimeException(String.format("Usuario com id %d não encontrado", id)));
     }
 
-    @GetMapping //api/usuario?nome={var}
-    public List<Usuario> buscarPorNome(@RequestParam String nome){
-        return this
-                .repo
-                .findByNomeContaining(nome);
+    @GetMapping(path = "/nome")
+    public List<Usuario> buscarPorNome(@RequestParam String nome) {
+        return this.repo.findByNomeCompletoContaining(nome);
     }
 
-    @PutMapping //api/usuario?id={var}
-    public Usuario putUsuario(@RequestBody Usuario newColaborador, @RequestParam Long id){
+    @PutMapping(path = "/") 
+    public Usuario putUsuario(@RequestBody Usuario newColaborador, @RequestParam Long id) {
         Usuario oldColaborador = this.repo.findById(id).isPresent() ? this.repo.findById(id).get() : new Usuario();
         newColaborador.setId(oldColaborador.getId());
         return this.repo.save(newColaborador);
     }
 
-    @DeleteMapping //api/usuario?id={var}
+    @DeleteMapping(path = "/") 
     void deleteColaborador(@RequestParam Long id) {
         this.repo.deleteById(id);
     }
 
-    @GetMapping //api/usuario?endereco={var}
-    public List<Usuario> buscarPorEndereco(@RequestParam String endereco){
+    @GetMapping(path = "/endereco") 
+    public List<Usuario> buscarPorEndereco(@RequestParam String endereco) {
         return this
                 .repo
                 .findByEnderecoContaining(endereco);
