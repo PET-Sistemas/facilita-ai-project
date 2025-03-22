@@ -24,11 +24,11 @@ public class Servico {
 
     @ManyToOne
     @JoinColumn(name = "usuario_prestador_id")
-    private Usuario usuario_prestador;
+    private Usuario usuarioPrestador;
     
     @ManyToOne
     @JoinColumn(name = "usuario_consumidor_id")
-    private Usuario usuario_consumidor;
+    private Usuario usuarioConsumidor;
 
     @OneToMany(mappedBy = "servico", cascade = CascadeType.ALL)
     private List<PrestacaoServico> avaliacoes; // Relacionamento "um para muitos"
@@ -81,19 +81,19 @@ public class Servico {
     }
 
     public Usuario getUsuario() {
-        return usuario_consumidor;
+        return usuarioConsumidor;
     }
 
-    public void setUsuario(Usuario usuario_consumidor) {
-        this.usuario_consumidor = usuario_consumidor;
+    public void setUsuario(Usuario usuarioConsumidor) {
+        this.usuarioConsumidor = usuarioConsumidor;
     }
 
-    public Usuario getUsuario_prestador() {
-        return usuario_prestador;
+    public Usuario getUsuarioPrestador() {
+        return usuarioPrestador;
     }
 
-    public void setUsuario_prestador(Usuario usuario_prestador) {
-        this.usuario_prestador = usuario_prestador;
+    public void setUsuarioPrestador(Usuario usuarioPrestador) {
+        this.usuarioPrestador = usuarioPrestador;
     }
 }
 

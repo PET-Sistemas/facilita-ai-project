@@ -20,10 +20,10 @@ public class PrestacaoServico {
     @ManyToOne
     @JoinColumn(name = "usuario_consumidor_id")
     private Usuario usuarioConsumidor;
-    
+
     @ManyToOne
     @JoinColumn(name = "usuario_prestador_id")
-    private Usuario usuarioFornecedor;
+    private Usuario usuarioPrestador;
 
     @ManyToOne
     @JoinColumn(name = "servico_id")
@@ -62,6 +62,14 @@ public class PrestacaoServico {
         this.avaliacaodesc = avaliacaodesc;
     }
 
+    public Servico getServico() {
+        return servico;
+    }
+
+    public void setServico(Servico servico) {
+        this.servico = servico;
+    }
+
     public Usuario getUsuarioConsumidor() {
         return usuarioConsumidor;
     }
@@ -70,19 +78,11 @@ public class PrestacaoServico {
         this.usuarioConsumidor = usuarioConsumidor;
     }
 
-    public Usuario getUsuarioFornecedor() {
-        return usuarioFornecedor;
+    public Usuario getUsuarioPrestador() {
+        return usuarioPrestador;
     }
 
-    public void setUsuarioFornecedor(Usuario usuarioFornecedor) {
-        this.usuarioFornecedor = usuarioFornecedor;
-    }
-
-    public Servico getServico() {
-        return servico;
-    }
-
-    public void setServico(Servico servico) {
-        this.servico = servico;
+    public void setUsuarioPrestador(Usuario usuarioPrestador) {
+        this.usuarioPrestador = usuarioPrestador;
     }
 }
