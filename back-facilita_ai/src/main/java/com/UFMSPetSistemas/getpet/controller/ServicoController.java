@@ -2,11 +2,9 @@
 
 package com.UFMSPetSistemas.getpet.controller;
 
-import com.UFMSPetSistemas.getpet.model.entities.Usuario;
 import com.UFMSPetSistemas.getpet.model.entities.Servico;
 import com.UFMSPetSistemas.getpet.model.entities.Categoria;
 import com.UFMSPetSistemas.getpet.model.repository.ServicoRepository;
-import com.UFMSPetSistemas.getpet.model.repository.UsuarioRepository;
 import com.UFMSPetSistemas.getpet.model.repository.CategoriaRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -44,8 +42,8 @@ public class ServicoController {
     // Buscar serviços por endereço do usuário
     @GetMapping("/usuario-endereco")
     @Transactional(readOnly = true)
-    public List<Servico> getServicosByUsuarioEndereco(@RequestParam String endereco) {
-        return servicoRepository.findByUsuarioEndereco(endereco);
+    public List<Servico> getServicosByUsuarioPrestadorEndereco(@RequestParam String endereco) {
+        return servicoRepository.findByUsuarioPrestadorEndereco(endereco);
     }
 
     // Buscar serviços por categoria

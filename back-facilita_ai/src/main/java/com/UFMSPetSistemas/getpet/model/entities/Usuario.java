@@ -38,10 +38,10 @@ public class Usuario {
 
 	private String senha;
 
-	@OneToMany(mappedBy = "usuario_prestador", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "usuarioPrestador", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Servico> servicos;
 	
-	@OneToMany(mappedBy = "usuarioFornecedor", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "usuarioPrestador", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<PrestacaoServico> servicosPrestados;
 	
 	@OneToMany(mappedBy = "usuarioConsumidor", cascade = CascadeType.ALL, orphanRemoval = true)

@@ -26,7 +26,7 @@ public class PrestacaoServicoController {
     }
 
     @GetMapping("/usuario/{id}")
-    public List<PrestacaoServico> findByUsuario(@PathVariable Long id) {
-        return prestacaoServicoService.findByUsuario(id);
+    public List<PrestacaoServico> findByUsuarioPrestador(@PathVariable Long id) {
+        return prestacaoServicoService.findByUsuarioPrestador(id);
     }
 }
