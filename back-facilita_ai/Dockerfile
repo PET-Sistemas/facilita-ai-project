@@ -3,9 +3,10 @@ FROM eclipse-temurin:21-jdk-alpine as builder
 WORKDIR /app
 
 # Instala dependências necessárias para o Maven Wrapper funcionar
-RUN apk add --no-cache bash
+RUN apk add --no-cache bash sed
 
 COPY . .
+RUN sed -i 's/\r$//' mvnw
 RUN chmod +x ./mvnw
 RUN ./mvnw clean package -DskipTests
 
