@@ -4,7 +4,14 @@ import com.UFMSPetSistemas.getpet.model.entities.Usuario;
 import com.UFMSPetSistemas.getpet.model.repository.UsuarioRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
+import org.springdoc.core.annotations.RouterOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,10 +21,43 @@ import java.util.List;
 @RequestMapping("/usuario")
 @Tag(name = "Usuário", description = "Endpoints para gerenciamento de usuários")
 public class UsuarioController {
+    @Autowired
     private UsuarioRepository repo;
 
     @PostMapping(path = "/")
-    @Operation(summary = "Cadastrar um novo usuário", description = "Recebe os dados de um novo usuário e o salva no banco de dados.")
+    //@Operation(summary = "Cadastrar um novo usuário", description = "Recebe os dados de um novo usuário e o salva no banco de dados.")
+    @Operation(
+        operationId = "cadastrarUsuario", 
+        summary = "Cadastrar um novo us", 
+        description = "Recebe os dados de um novo usuário e o salva no banco de dados.",
+        tags = { "Usuário" },
+        requestBody = @RequestBody(
+            description = "Dados do novo usuário",
+            required = true,
+            content = @Content(
+                mediaType = "application/json",
+                schema = @Schema(implementation = Usuario.class),
+                examples = @ExampleObject(
+                    name = "Exemplo de usuário",
+                    summary = "JSON válido para criação de usuário",
+                    value = "{\n" +
+                            "  \"nomeCompleto\": \"João da Silva\",\n" +
+                            "  \"dataNascimento\": \"1990-01-01\",\n" +
+                            "  \"endereco\": \"Rua das Flores, 123\",\n" +
+                            "  \"cidade\": \"Campo Grande\",\n" +
+                            "  \"uf\": \"MS\",\n" +
+                            "  \"email\": \"joao@example.com\",\n" +
+                            "  \"telefone\": \"67999998888\",\n" +
+                            "  \"senha\": \"senha123\"\n" +
+                            "}"
+                )
+            )
+        ),
+        responses = { 
+            @ApiResponse(responseCode = "200", description = "Usuário cadastrado com sucesso.", content = @Content(schema = @Schema(implementation = Usuario.class))),
+            @ApiResponse(responseCode = "400", description = "Json inválido."),
+        }
+    )
     public Usuario cadastrarUsuario(@RequestBody Usuario novoColaborador) {
         System.out.println("Dados recebidos: " + novoColaborador);
         try {
