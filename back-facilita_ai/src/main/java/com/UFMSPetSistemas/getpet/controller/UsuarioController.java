@@ -8,13 +8,13 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
-import org.springdoc.core.annotations.RouterOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
+import com.UFMSPetSistemas.getpet.controller.dto.CadastroUsuarioDTO;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 
 @RestController
 @CrossOrigin
@@ -24,14 +24,16 @@ public class UsuarioController {
     @Autowired
     private UsuarioRepository repo;
 
-    @PostMapping(path = "/")
-    //@Operation(summary = "Cadastrar um novo usuário", description = "Recebe os dados de um novo usuário e o salva no banco de dados.")
+    @PostMapping(
+        consumes = MediaType.APPLICATION_JSON_VALUE,
+        produces = MediaType.APPLICATION_JSON_VALUE
+    )
     @Operation(
         operationId = "cadastrarUsuario", 
-        summary = "Cadastrar um novo us", 
+        summary = "Cadastrar um novo usuário.", 
         description = "Recebe os dados de um novo usuário e o salva no banco de dados.",
         tags = { "Usuário" },
-        requestBody = @RequestBody(
+        requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
             description = "Dados do novo usuário",
             required = true,
             content = @Content(
@@ -58,16 +60,18 @@ public class UsuarioController {
             @ApiResponse(responseCode = "400", description = "Json inválido."),
         }
     )
-    public Usuario cadastrarUsuario(@RequestBody Usuario novoColaborador) {
+    @ResponseBody
+    public ResponseEntity<?> cadastrarUsuario(@RequestBody Usuario novoColaborador) {
         System.out.println("Dados recebidos: " + novoColaborador);
+    
         try {
             Usuario usuarioSalvo = this.repo.save(novoColaborador);
             System.out.println("Usuário salvo: " + usuarioSalvo);
-            return usuarioSalvo;
+            return ResponseEntity.ok("Usuário cadastrado com sucesso!");
         } catch (Exception e) {
             System.err.println("Erro ao salvar: " + e.getMessage());
             e.printStackTrace();
-            throw e;
+            return ResponseEntity.badRequest().body("Erro ao cadastrar usuário: " + e.getMessage());
         }
     }
 
