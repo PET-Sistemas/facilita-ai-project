@@ -1,6 +1,8 @@
 package com.UFMSPetSistemas.getpet.controller;
 
 import java.util.List;
+
+import org.apache.catalina.connector.Response;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -87,9 +89,10 @@ public interface IntUsuarioController {
         },
         responses = {
             @ApiResponse(responseCode = "200", description = "Usuário retornado com sucesso.", content = @Content(schema = @Schema(implementation = Usuario.class))),
+            @ApiResponse(responseCode = "400", description = "ID inválido.")
         }
     )
-    public Usuario buscarPorId(@RequestParam Long id);
+    public ResponseEntity<?> buscarPorId(@RequestParam Long id);
 
     @GetMapping(path = "/nome")
     @Operation(
@@ -102,9 +105,10 @@ public interface IntUsuarioController {
         },
         responses = { 
             @ApiResponse(responseCode = "200", description = "Usuário retornado com sucesso.", content = @Content(schema = @Schema(implementation = Usuario.class))),
+            @ApiResponse(responseCode = "400", description = "Nome inválido.")
         }
     )
-    public List<Usuario> buscarPorNome(@RequestParam String nome);
+    public ResponseEntity<?> buscarPorNome(@RequestParam String nome);
 
     @GetMapping(path = "/endereco")
     @Operation(
@@ -117,9 +121,10 @@ public interface IntUsuarioController {
         },
         responses = { 
             @ApiResponse(responseCode = "200", description = "Usuário deletado com sucesso.", content = @Content(schema = @Schema(implementation = Usuario.class))),
+            @ApiResponse(responseCode = "400", description = "Endereço inválido.")
         }
     )
-    public List<Usuario> buscarPorEndereco(@RequestParam String endereco);
+    public ResponseEntity<?> buscarPorEndereco(@RequestParam String endereco);
 
     @PutMapping(path = "/")
     @Operation(
@@ -154,9 +159,12 @@ public interface IntUsuarioController {
         ),
         responses = { 
             @ApiResponse(responseCode = "200", description = "Usuário atualizado com sucesso.", content = @Content(schema = @Schema(implementation = Usuario.class))),
+            //@ApiResponse(responseCode = "400", description = "ID inválido."),
+            //@ApiResponse(responseCode = "404", description = "Usuário não encontrado."),
+            @ApiResponse(responseCode = "422", description = "Erro ao atualizar usuário.")
         }
     )
-    public Usuario putUsuario(@RequestBody Usuario newColaborador, @RequestParam Long id);
+    public ResponseEntity<?> putUsuario(@RequestBody Usuario newColaborador, @RequestParam Long id);
 
     @DeleteMapping(path = "/")
     @Operation(
