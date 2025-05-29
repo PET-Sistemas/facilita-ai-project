@@ -1,6 +1,6 @@
 services:
   db:
-    image: postgres:13
+    image: postgres:16
     container_name: getpet_db
     environment:
       POSTGRES_USER: getpet
@@ -8,6 +8,8 @@ services:
       POSTGRES_DB: getpet
     networks:
       - app-network
+    ports:
+      - "5432:5432"
   api:
     build:
       context: ./back-facilita_ai
