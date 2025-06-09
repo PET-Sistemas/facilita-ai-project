@@ -2,37 +2,36 @@ package com.UFMSPetSistemas.getpet.model.entities;
 
 import com.UFMSPetSistemas.getpet.model.entities.Servico;
 import com.UFMSPetSistemas.getpet.model.entities.PrestacaoServico;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.persistence.*;
+
+import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+import java.util.Random;
 
 @Entity
 public class Usuario {
+	/* ATRIBUTOS */
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "O nome completo é obrigatório.")
 	private String nomeCompleto;
 
     @Temporal(TemporalType.DATE)
 	private Date dataNascimento;
 
-    @NotBlank(message = "O endereço é obrigatório.")
 	private String endereco;
 
-    @NotBlank(message = "A cidade é obrigatória.")
 	private String cidade;
 
-    @NotBlank(message = "O estado (UF) é obrigatório.")
 	private String uf;
 
-    @NotBlank(message = "O e-mail é obrigatório.")
 	private String email;
 
-	@NotBlank(message = "O telefone é obrigatório.")
 	@Pattern(regexp = "\\d{11}", message = "O telefone deve ter 11 dígitos numéricos.")
 	private String telefone;
 
@@ -47,101 +46,157 @@ public class Usuario {
 	@OneToMany(mappedBy = "usuarioConsumidor", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<PrestacaoServico> servicosContratados;
 
+	/* CONSTRUTORES */
+	public Usuario(String nomeCompleto,
+				   Date dataNascimento,
+				   String endereco,
+				   String cidade,
+				   String uf,
+				   String email,
+				   String telefone,
+				   String senha
+	) {
+		this.nomeCompleto = nomeCompleto;
+		this.dataNascimento = dataNascimento;
+		this.endereco = endereco;
+		this.cidade = cidade;
+		this.uf = uf;
+		this.email = email;
+		this.telefone = telefone;
+		this.senha = senha;
+		this.servicos = null;
+		this.servicosPrestados = null;
+		this.servicosContratados = null;
+	}
+
+	public Usuario(){} // Construtor sem argumentos para o framework
+
+	/**
+	 * Factory Method para criar novo Usuario quando construtor for privado
+	 *
+	 */
+	public static Usuario newUsuario() {
+		System.out.println("Não implementado");
+
+		return new Usuario();
+	}
+
+	/* GETTERS */
 	public Long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-
 	public List<Servico> getServicos() {
 		return servicos;
 	}
-	
-	public void setServicos(List<Servico> servicos) {
-		this.servicos = servicos;
-	}
-	
+
 	public List<PrestacaoServico> getServicosPrestados() {
 		return servicosPrestados;
 	}
-	
-	public void setServicosPrestados(List<PrestacaoServico> servicosPrestados) {
-		this.servicosPrestados = servicosPrestados;
-	}
-	
+
 	public String getNomeCompleto() {
 		return nomeCompleto;
-	}
-
-	public void setNomeCompleto(String nomeCompleto) {
-		this.nomeCompleto = nomeCompleto;
 	}
 
 	public Date getDataNascimento() {
 		return dataNascimento;
 	}
 
-	public void setDataNascimento(Date dataNascimento) {
-		this.dataNascimento = dataNascimento;
-	}
-
 	public String getEndereco() {
 		return endereco;
-	}
-
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
 	}
 
 	public String getCidade() {
 		return cidade;
 	}
 
-	public void setCidade(String cidade) {
-		this.cidade = cidade;
-	}
-
 	public String getUf() {
 		return uf;
-	}
-
-	public void setUf(String uf) {
-		this.uf = uf;
 	}
 
 	public String getEmail() {
 		return email;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
 	public String getTelefone() {
 		return telefone;
-	}
-
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
 	}
 
 	public String getSenha() {
 		return senha;
 	}
 
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-
 	public List<PrestacaoServico> getServicosContratados() {
 		return servicosContratados;
 	}
 
+	/* SETTERS */
+	public void setServicos(List<Servico> servicos) {
+		this.servicos = servicos;
+	}
+
+	public void setServicosPrestados(List<PrestacaoServico> servicosPrestados) {
+		this.servicosPrestados = servicosPrestados;
+	}
+
+	public void setNomeCompleto(String nomeCompleto) {
+		this.nomeCompleto = nomeCompleto;
+	}
+
+	public void setDataNascimento(Date dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+
+	public void setUf(String uf) {
+		this.uf = uf;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
 	public void setServicosContratados(List<PrestacaoServico> servicosConsumidos) {
 		this.servicosContratados = servicosConsumidos;
+	}
+
+	/* MÉTODOS DA CLASSE */
+
+	public Usuario update(
+		String nomeCompleto,
+		Date dataNascimento,
+		String endereco,
+		String cidade,
+		String uf,
+		String email,
+		String telefone,
+		String senha
+	){
+		setNomeCompleto(nomeCompleto);
+		setDataNascimento(dataNascimento);
+		setEndereco(endereco);
+		setCidade(cidade);
+		setUf(uf);
+		setEmail(email);
+		setTelefone(telefone);
+		setSenha(senha);
+
+		return this;
 	}
 
 	@Override

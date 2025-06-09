@@ -1,5 +1,7 @@
-package com.UFMSPetSistemas.getpet.controller;
+package com.UFMSPetSistemas.getpet.controller.usuario;
 
+import com.UFMSPetSistemas.getpet.controller.usuario.dto.AtualizarUsuarioDTO;
+import com.UFMSPetSistemas.getpet.controller.usuario.dto.CadastroUsuarioDTO;
 import com.UFMSPetSistemas.getpet.model.entities.Usuario;
 import com.UFMSPetSistemas.getpet.model.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +20,20 @@ public class UsuarioController implements IntUsuarioController {
     private UsuarioRepository repo;
 
     @Override
-    public ResponseEntity<?> cadastrarUsuario(final Usuario novoColaborador) {
+    public ResponseEntity<?> cadastrarUsuario(final CadastroUsuarioDTO novoColaborador) {
         System.out.println("Dados recebidos: " + novoColaborador);
-        System.out.println("Nome: " + novoColaborador.getNomeCompleto());
-    
+
         try {
-            Usuario usuarioSalvo = this.repo.save(novoColaborador);
+            Usuario usuarioSalvo = this.repo.save(new Usuario(
+                    novoColaborador.nomeCompleto(),
+                    novoColaborador.dataNascimento(),
+                    novoColaborador.endereco(),
+                    novoColaborador.cidade(),
+                    novoColaborador.uf(),
+                    novoColaborador.email(),
+                    novoColaborador.telefone(),
+                    novoColaborador.senha()
+            ));
             System.out.println("Usuário salvo: " + usuarioSalvo);
             
             return ResponseEntity.created(URI.create("/categories/" + usuarioSalvo.getId())).body(usuarioSalvo);
@@ -86,45 +96,23 @@ public class UsuarioController implements IntUsuarioController {
     }
 
     @Override
-    public ResponseEntity<?> putUsuario(final Usuario newColaborador, final Long id) {
+    public ResponseEntity<?> putUsuario(final AtualizarUsuarioDTO newUsuario, final Long id) {
         try {
-            Usuario oldColaborador = this.repo.findById(id).isPresent() ? this.repo.findById(id).get() : new Usuario();
-            //newColaborador.setId(oldColaborador.getId());
+            //Usuario oldColaborador = this.repo.findById(id).isPresent() ? this.repo.findById(id).get() : new Usuario();
+            Usuario usuario = this.repo.findById(id).orElseThrow(() -> new Exception("Usuario com ID " + id + " não encontrado."));
 
-            oldColaborador.setNomeCompleto(newColaborador.getNomeCompleto());
-            oldColaborador.setEmail(newColaborador.getEmail());
-            oldColaborador.setTelefone(newColaborador.getTelefone());
-            oldColaborador.setCidade(newColaborador.getCidade());
-            oldColaborador.setEndereco(newColaborador.getEndereco());
-            oldColaborador.setUf(newColaborador.getUf());
-            oldColaborador.setDataNascimento(newColaborador.getDataNascimento());
-            oldColaborador.setSenha(newColaborador.getSenha());
+            usuario.update(
+                newUsuario.nomeCompleto(),
+                newUsuario.dataNascimento(),
+                newUsuario.endereco(),
+                newUsuario.cidade(),
+                newUsuario.uf(),
+                newUsuario.email(),
+                newUsuario.telefone(),
+                newUsuario.senha()
+            );
 
-            if (!oldColaborador.getServicos().isEmpty()) {
-                oldColaborador.getServicos().clear();
-            }
-
-            if (newColaborador.getServicos() != null) {
-                oldColaborador.getServicos().addAll(newColaborador.getServicos());
-            }
-
-            if (!oldColaborador.getServicosPrestados().isEmpty()) {
-                oldColaborador.getServicosPrestados().clear();
-            }
-
-            if (newColaborador.getServicosPrestados() != null) {
-                oldColaborador.getServicosPrestados().addAll(newColaborador.getServicosPrestados());
-            }
-
-            if (!oldColaborador.getServicosContratados().isEmpty()) {
-                oldColaborador.getServicosContratados().clear();
-            }
-
-            if (newColaborador.getServicosContratados() != null) {
-                oldColaborador.getServicosContratados().addAll(newColaborador.getServicosContratados());
-            }
-
-            Usuario usuarioSalvo = this.repo.save(newColaborador);
+            Usuario usuarioSalvo = this.repo.save(usuario);
 
             return ResponseEntity.ok().body(usuarioSalvo);
         } catch (Exception e) {
