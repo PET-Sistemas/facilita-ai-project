@@ -1,8 +1,9 @@
-package com.UFMSPetSistemas.getpet.controller;
+package com.UFMSPetSistemas.getpet.controller.usuario;
 
 import java.util.List;
 
-import org.apache.catalina.connector.Response;
+import com.UFMSPetSistemas.getpet.controller.usuario.dto.AtualizarUsuarioDTO;
+import com.UFMSPetSistemas.getpet.controller.usuario.dto.CadastroUsuarioDTO;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -59,12 +60,35 @@ public interface IntUsuarioController {
             )
         ),
         responses = { 
-            @ApiResponse(responseCode = "200", description = "Usuário cadastrado com sucesso.", content = @Content(schema = @Schema(implementation = Usuario.class))),
+            @ApiResponse(responseCode = "201", description = "Usuário cadastrado com sucesso.", content = @Content(
+                    examples = {@ExampleObject(
+                            name = "Novo Usuário Exemplo João",
+                            summary = "",
+                            description = "Usuário cadastrado com todos os campos e servicos em null.",
+                            value = "{" +
+                                    "  \"id\": 7,\n" +
+                                    "  \"nomeCompleto\": \"João da Silva\",\n" +
+                                    "  \"dataNascimento\": \"1990-01-01T00:00:00.000+00:00\",\n" +
+                                    "  \"endereco\": \"Rua das Flores, 123\",\n" +
+                                    "  \"cidade\": \"Campo Grande\",\n" +
+                                    "  \"uf\": \"MS\",\n" +
+                                    "  \"email\": \"joao@example.com\",\n" +
+                                    "  \"telefone\": \"67999998888\",\n" +
+                                    "  \"senha\": \"senha123\",\n" +
+                                    "  \"servicos\": null,\n" +
+                                    "  \"servicosPrestados\": null,\n" +
+                                    "  \"servicosContratados\": null\n" +
+                                    "}")
+                    },
+                    mediaType = MediaType.APPLICATION_JSON_VALUE,
+                    schema = @Schema(implementation = Usuario.class)
+                )
+            ),
             @ApiResponse(responseCode = "400", description = "Json inválido."),
         }
     )
     @ResponseBody
-    ResponseEntity<?> cadastrarUsuario(@RequestBody Usuario novoColaborador);
+    ResponseEntity<?> cadastrarUsuario(@RequestBody CadastroUsuarioDTO novoColaborador);
     
     @GetMapping(path = "/todos")
     @Operation(
@@ -164,7 +188,7 @@ public interface IntUsuarioController {
             @ApiResponse(responseCode = "422", description = "Erro ao atualizar usuário.")
         }
     )
-    public ResponseEntity<?> putUsuario(@RequestBody Usuario newColaborador, @RequestParam Long id);
+    public ResponseEntity<?> putUsuario(@RequestBody AtualizarUsuarioDTO newColaborador, @RequestParam Long id);
 
     @DeleteMapping(path = "/")
     @Operation(
