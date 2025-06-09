@@ -7,6 +7,9 @@
     <list default="true" id="98b1ad3b-64e4-4725-a2e2-607fc6f66564" name="Changes" comment="Fix: Remoção de comentarios desnecessarios e formatação de repositorio de usuario pra funcionamento correto de controladora.&#10;Mudança no Dockerfile visando funcionamento correto">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/controller/usuario/IntUsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/controller/usuario/IntUsuarioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/controller/usuario/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/controller/usuario/UsuarioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/model/entities/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/model/entities/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-facilita_ai/target/classes/com/UFMSPetSistemas/getpet/model/entities/Usuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/target/classes/com/UFMSPetSistemas/getpet/model/entities/Usuario.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

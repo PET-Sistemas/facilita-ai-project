@@ -229,9 +229,37 @@ public interface IntUsuarioController {
             )
         ),
         responses = { 
-            @ApiResponse(responseCode = "200", description = "Usuário atualizado com sucesso.", content = @Content(schema = @Schema(implementation = Usuario.class))),
-            //@ApiResponse(responseCode = "400", description = "ID inválido."),
-            //@ApiResponse(responseCode = "404", description = "Usuário não encontrado."),
+            @ApiResponse(responseCode = "200", description = "Usuário atualizado com sucesso.", content = @Content(
+                    examples = {@ExampleObject(
+                            name = "Ex. 1: Dados do usuário atualizado",
+                            summary = "",
+                            description = "",
+                            value = "{" +
+                                    "  \"id\": 1,\n" +
+                                    "  \"nomeCompleto\": \"Felipe\",\n" +
+                                    "  \"dataNascimento\": \"1989-12-31T00:00:00.000+00:00\",\n" +
+                                    "  \"endereco\": \"Rua das Flores, 123\",\n" +
+                                    "  \"cidade\": \"Campo Grande\",\n" +
+                                    "  \"uf\": \"MS\",\n" +
+                                    "  \"email\": \"joao@example.com\",\n" +
+                                    "  \"telefone\": \"67999998888\",\n" +
+                                    "  \"senha\": \"senha123\",\n" +
+                                    "  \"servicos\": [],\n" +
+                                    "  \"servicosPrestados\": [],\n" +
+                                    "  \"servicosContratados\": []\n" +
+                                    "}"
+                    ),
+                            @ExampleObject(
+                                    name = "Ex. 2: ID inválido",
+                                    summary = "",
+                                    description = "",
+                                    value = "Usuario com ID 0 não encontrado."
+                            )
+                    },
+                    mediaType = MediaType.APPLICATION_JSON_VALUE,
+                    schema = @Schema(implementation = Usuario.class)
+                )
+            ),
             @ApiResponse(responseCode = "422", description = "Erro ao atualizar usuário.")
         }
     )

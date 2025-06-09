@@ -96,54 +96,31 @@ public class UsuarioController implements IntUsuarioController {
     }
 
     @Override
-    public ResponseEntity<?> putUsuario(final AtualizarUsuarioDTO newColaborador, final Long id) {
-//        try {
-//            Usuario oldColaborador = this.repo.findById(id).isPresent() ? this.repo.findById(id).get() : new Usuario();
-//            //newColaborador.setId(oldColaborador.getId());
-//
-//            oldColaborador.setNomeCompleto(newColaborador.getNomeCompleto());
-//            oldColaborador.setEmail(newColaborador.getEmail());
-//            oldColaborador.setTelefone(newColaborador.getTelefone());
-//            oldColaborador.setCidade(newColaborador.getCidade());
-//            oldColaborador.setEndereco(newColaborador.getEndereco());
-//            oldColaborador.setUf(newColaborador.getUf());
-//            oldColaborador.setDataNascimento(newColaborador.getDataNascimento());
-//            oldColaborador.setSenha(newColaborador.getSenha());
-//
-//            if (!oldColaborador.getServicos().isEmpty()) {
-//                oldColaborador.getServicos().clear();
-//            }
-//
-//            if (newColaborador.getServicos() != null) {
-//                oldColaborador.getServicos().addAll(newColaborador.getServicos());
-//            }
-//
-//            if (!oldColaborador.getServicosPrestados().isEmpty()) {
-//                oldColaborador.getServicosPrestados().clear();
-//            }
-//
-//            if (newColaborador.getServicosPrestados() != null) {
-//                oldColaborador.getServicosPrestados().addAll(newColaborador.getServicosPrestados());
-//            }
-//
-//            if (!oldColaborador.getServicosContratados().isEmpty()) {
-//                oldColaborador.getServicosContratados().clear();
-//            }
-//
-//            if (newColaborador.getServicosContratados() != null) {
-//                oldColaborador.getServicosContratados().addAll(newColaborador.getServicosContratados());
-//            }
-//
-//            Usuario usuarioSalvo = this.repo.save(newColaborador);
-//
-//            return ResponseEntity.ok().body(usuarioSalvo);
-//        } catch (Exception e) {
-//            System.err.println("Erro ao atualizar: " + e.getMessage());
-//            e.printStackTrace();
-//
-//            return ResponseEntity.unprocessableEntity().body(e.getMessage());
-//        }
-        return ResponseEntity.ok().body("oi");
+    public ResponseEntity<?> putUsuario(final AtualizarUsuarioDTO newUsuario, final Long id) {
+        try {
+            //Usuario oldColaborador = this.repo.findById(id).isPresent() ? this.repo.findById(id).get() : new Usuario();
+            Usuario usuario = this.repo.findById(id).orElseThrow(() -> new Exception("Usuario com ID " + id + " não encontrado."));
+
+            usuario.update(
+                newUsuario.nomeCompleto(),
+                newUsuario.dataNascimento(),
+                newUsuario.endereco(),
+                newUsuario.cidade(),
+                newUsuario.uf(),
+                newUsuario.email(),
+                newUsuario.telefone(),
+                newUsuario.senha()
+            );
+
+            Usuario usuarioSalvo = this.repo.save(usuario);
+
+            return ResponseEntity.ok().body(usuarioSalvo);
+        } catch (Exception e) {
+            System.err.println("Erro ao atualizar: " + e.getMessage());
+            e.printStackTrace();
+
+            return ResponseEntity.unprocessableEntity().body(e.getMessage());
+        }
     }
 
     @Override

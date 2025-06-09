@@ -2,6 +2,7 @@ package com.UFMSPetSistemas.getpet.model.entities;
 
 import com.UFMSPetSistemas.getpet.model.entities.Servico;
 import com.UFMSPetSistemas.getpet.model.entities.PrestacaoServico;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.persistence.*;
@@ -172,6 +173,30 @@ public class Usuario {
 
 	public void setServicosContratados(List<PrestacaoServico> servicosConsumidos) {
 		this.servicosContratados = servicosConsumidos;
+	}
+
+	/* MÉTODOS DA CLASSE */
+
+	public Usuario update(
+		String nomeCompleto,
+		Date dataNascimento,
+		String endereco,
+		String cidade,
+		String uf,
+		String email,
+		String telefone,
+		String senha
+	){
+		setNomeCompleto(nomeCompleto);
+		setDataNascimento(dataNascimento);
+		setEndereco(endereco);
+		setCidade(cidade);
+		setUf(uf);
+		setEmail(email);
+		setTelefone(telefone);
+		setSenha(senha);
+
+		return this;
 	}
 
 	@Override
