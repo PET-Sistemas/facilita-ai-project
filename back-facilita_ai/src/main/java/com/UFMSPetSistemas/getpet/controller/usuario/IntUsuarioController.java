@@ -97,7 +97,54 @@ public interface IntUsuarioController {
         description = "Retorna uma lista com todos os usuários cadastrados.",
         tags = { "Usuário" },
         responses = { 
-            @ApiResponse(responseCode = "200", description = "Usuários retornados com sucesso.", content = @Content(schema = @Schema(implementation = Usuario.class))),
+            @ApiResponse(responseCode = "200", description = "Usuários retornados com sucesso.", content = @Content(
+                    examples = {@ExampleObject(
+                            name = "Ex. 1: Lista cheia de usuários",
+                            summary = "Lista de usuários com + de 1 usuário retornados.",
+                            description = "",
+                            value = "[" +
+                                    "  {" +
+                                    "    \"id\": 1,\n" +
+                                    "    \"nomeCompleto\": \"João da Silva\",\n" +
+                                    "    \"dataNascimento\": \"1989-12-31\",\n" +
+                                    "    \"endereco\": \"Rua das Flores, 123\",\n" +
+                                    "    \"cidade\": \"Campo Grande\",\n" +
+                                    "    \"uf\": \"MS\",\n" +
+                                    "    \"email\": \"joao@example.com\",\n" +
+                                    "    \"telefone\": \"67999998888\",\n" +
+                                    "    \"senha\": \"senha123\",\n" +
+                                    "    \"servicos\": [],\n" +
+                                    "    \"servicosPrestados\": [],\n" +
+                                    "    \"servicosContratados\": []\n" +
+                                    "  },\n" +
+                                    "  {\n" +
+                                    "    \"id\": 2,\n" +
+                                    "    \"nomeCompleto\": \"João da Silva\",\n" +
+                                    "    \"dataNascimento\": \"1989-12-31\",\n" +
+                                    "    \"endereco\": \"Rua das Flores, 123\",\n" +
+                                    "    \"cidade\": \"Campo Grande\",\n" +
+                                    "    \"uf\": \"MS\",\n" +
+                                    "    \"email\": \"joao@example.com\",\n" +
+                                    "    \"telefone\": \"67999998888\",\n" +
+                                    "    \"senha\": \"senha123\",\n" +
+                                    "    \"servicos\": [],\n" +
+                                    "    \"servicosPrestados\": [],\n" +
+                                    "    \"servicosContratados\": []\n" +
+                                    "  }" +
+                                    "]"
+                            ),
+                            @ExampleObject(
+                            name = "Ex. 2: Lista vazia de usuários",
+                            summary = "Lista de usuários retornada vazia.",
+                            description = "",
+                            value = "[" +
+                                    "]"
+                            )
+                    },
+                    mediaType = MediaType.APPLICATION_JSON_VALUE,
+                    schema = @Schema(implementation = Usuario.class)
+                )
+            ),
         }
     )
     public List<Usuario> listarUsuarios();
@@ -215,7 +262,17 @@ public interface IntUsuarioController {
             )
         ),
         responses = { 
-            @ApiResponse(responseCode = "200", description = "Usuário deletado com sucesso.", content = @Content(schema = @Schema(implementation = Usuario.class))),
+            @ApiResponse(responseCode = "200", description = "Usuário deletado com sucesso.", content = @Content(
+                    examples = @ExampleObject(
+                            name = "Usuário deletado com sucesso.",
+                            summary = "",
+                            description = "",
+                            value = "Sem retorno."
+                    ),
+                    mediaType = MediaType.APPLICATION_JSON_VALUE,
+                    schema = @Schema(implementation = Usuario.class)
+                )
+            ),
         }
     )
     public void deleteColaborador(@RequestParam Long id);
