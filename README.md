@@ -10,13 +10,13 @@
 - [PostgreSQL]
 - Docker
 - JWT
-- [Swagger](https://swagger.io/) para documentação da API (se aplicável)
+- [Swagger](https://swagger.io/) para documentação da API 
 
 ---
 
 ## 📦 Instalação e Execução Local
 
-Obs.: É necessário possuir JDK 21 e Java na máquina. Preferencialmente IntelliJ IDEA.
+Obs.: É necessário possuir JDK 21 e Java na máquina.
 
 ### 1. Clone o repositório
 ```bash
@@ -48,11 +48,14 @@ public class GetpetApplication {
   ...
 ```
 ## 3. Como executar o projeto em desenvolvimento
-1. execute o comando para subir o banco de dados: ```sudo docker-compose up db```
+1. execute o comando para subir o banco de dados: ```docker-compose up db```
 2. execute a classe principal do projeto em GetpetApplication.java.
 
 ## 4. Como executar o projeto em produção
-1. execute o comando para subir a api e o banco de dados: ```sudo docker-compose up OU sudo docker-compose up api db```
+1. execute o comando para subir a api e o banco de dados: ``` docker-compose up OU  docker-compose up api db```
+
+## 5. Para acessar a documentação:
+1. Com a aplicação rodando, abra o navegador e entre no seguinte link : ``` (https://docs.spring.io/spring-boot/index.html) ```
 
 # BODYREQUEST USUARIO
 
