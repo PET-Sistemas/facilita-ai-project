@@ -18,11 +18,11 @@
 
 Obs.: É necessário possuir JDK 21 e Java na máquina. Preferencialmente IntelliJ IDEA.
 
-```bash
 # Clone o repositório
+```bash
 git clone https://github.com/PET-Sistemas/facilita-ai-project.git
 cd facilita-ai-project
-
+```
 # Configure as variáveis de ambiente
 O projeto possui dois ambientes, um de produção e outro de desenvolvimento
 ambos são configurados na classe principal do projeto (GetpetApplication.java),
@@ -30,29 +30,29 @@ na linha de código: System.setProperty(Abst...);
 
 ## Ambiente de desenvolvimento:
 O ambiente de desenvolvimento é destinado aos desenvolvedores, facilitando a execução do projeto.
-
+```java
 @SpringBootApplication
 public class GetpetApplication {
   ...
 		System.setProperty(AbstractEnvironment.DEFAULT_PROFILES_PROPERTY_NAME, "");
   ...
-
+```
 ## Ambiente de produção:
 O ambiente de produção tem o objetivo de subir tanto a aplicação quanto o banco de dados juntos no mesmo ambiente
 utilizando docker, quando a aplicação estiver em produção.
-
+```java
 @SpringBootApplication
 public class GetpetApplication {
   ...
 		System.setProperty(AbstractEnvironment.DEFAULT_PROFILES_PROPERTY_NAME, "production");
   ...
-
+```
 # Como executar o projeto em desenvolvimento
-1. execute o comando: sudo docker-compose up db (sobe o banco de dados)
+1. execute o comando: ```bash sudo docker-compose up db (sobe o banco de dados)```
 2. execute a classe principal do projeto em GetpetApplication.java.
 
 # Como executar o projeto em produção
-1. execute o comando: sudo docker-compose up OU sudo docker-compose up api db
+1. execute o comando: ```bash sudo docker-compose up OU sudo docker-compose up api db```
 
 # BODYREQUEST USUARIO
 
