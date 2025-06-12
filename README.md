@@ -48,11 +48,11 @@ public class GetpetApplication {
   ...
 ```
 ## 3. Como executar o projeto em desenvolvimento
-1. execute o comando: ```sudo docker-compose up db (sobe o banco de dados)```
+1. execute o comando para subir o banco de dados: ```sudo docker-compose up db```
 2. execute a classe principal do projeto em GetpetApplication.java.
 
 ## 4. Como executar o projeto em produção
-1. execute o comando: ```sudo docker-compose up OU sudo docker-compose up api db```
+1. execute o comando para subir a api e o banco de dados: ```sudo docker-compose up OU sudo docker-compose up api db```
 
 # BODYREQUEST USUARIO
 
