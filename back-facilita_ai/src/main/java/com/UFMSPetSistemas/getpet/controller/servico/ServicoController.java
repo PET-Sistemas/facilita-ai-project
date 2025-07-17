@@ -1,91 +1,110 @@
-// As dependencias nao vao funcionar dado que as classes de entidade e repositorio de  Usuario e Categoria ainda nao foram desevolvidas
+package com.UFMSPetSistemas.getpet.controller.servico;
 
-package com.UFMSPetSistemas.getpet.controller;
-
+import com.UFMSPetSistemas.getpet.controller.servico.dto.CadastroServicoDTO;
 import com.UFMSPetSistemas.getpet.model.entities.Servico;
 import com.UFMSPetSistemas.getpet.model.entities.Categoria;
+import com.UFMSPetSistemas.getpet.model.entities.Usuario;
 import com.UFMSPetSistemas.getpet.model.repository.ServicoRepository;
 import com.UFMSPetSistemas.getpet.model.repository.CategoriaRepository;
+import com.UFMSPetSistemas.getpet.model.repository.UsuarioRepository;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-
+import java.net.URI;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
-
 @RestController
-@RequestMapping("/servicos")
-public class ServicoController {
-
+@RequestMapping("/servico")
+public class ServicoController implements IntServicoController{
     private final ServicoRepository servicoRepository;
     private final CategoriaRepository categoriaRepository;
+    private final UsuarioRepository usuarioRepository;
 
-    public ServicoController(ServicoRepository servicoRepository, CategoriaRepository categoriaRepository) {
+    public ServicoController(ServicoRepository servicoRepository, CategoriaRepository categoriaRepository, UsuarioRepository usuarioRepository) {
         this.servicoRepository = servicoRepository;
         this.categoriaRepository = categoriaRepository;
+        this.usuarioRepository = usuarioRepository;
     }
 
-    // Buscar todos os serviços
-    @GetMapping
+    @Override
+    public ResponseEntity<?> createServico(@RequestBody CadastroServicoDTO servicoDTO) {
+        System.out.println("Dados recebidos: " + servicoDTO);
+
+        try {
+            // Verificar se o ID da categoria foi enviado e se é válido
+            if (servicoDTO.categoriaID() == null || servicoDTO.categoriaID() == null) {
+                return ResponseEntity.badRequest().body(null); // Categoria não informada ou inválida
+            }
+
+            Optional<Categoria> categoria = categoriaRepository.findById(servicoDTO.categoriaID());
+
+            if (categoria.isEmpty()) {
+                return ResponseEntity.badRequest().body("Categoria não encontrada!"); // Categoria não encontrada
+            }
+
+            Optional<Usuario> usuarioPrestador = usuarioRepository.findById(servicoDTO.usuarioPrestadorID());
+
+            if(usuarioPrestador.isEmpty()){
+                return ResponseEntity.badRequest().body("Usuario prestador não encontrado!"); // Usuario não encontrado
+            }
+
+            Optional<Usuario> usuarioConsumidor = usuarioRepository.findById(servicoDTO.usuarioConsumidorID());
+
+            if(usuarioConsumidor.isEmpty()){
+                return ResponseEntity.badRequest().body("Usuario consumidor não encontrado!"); // Usuario não encontrado
+            }
+
+            Servico servicoSalvo = this.servicoRepository.save(new Servico(
+                    servicoDTO.titulo(),
+                    servicoDTO.descricao(),
+                    servicoDTO.valor(),
+                    categoria.get(),
+                    usuarioPrestador.get(),
+                    usuarioConsumidor.get()
+            ));
+
+            System.out.println("Servico salvo: " + servicoSalvo);
+
+            return ResponseEntity.created(URI.create("/categories/" + servicoSalvo.getId())).body(servicoSalvo);
+        } catch (Exception e) {
+            System.err.println("Erro ao salvar: " + e.getMessage());
+            e.printStackTrace();
+
+            return ResponseEntity.unprocessableEntity().body(Map.of(
+                    "errors", List.of(Map.of("message", e.getMessage()))
+            ));
+        }
+    }
+
+    @Override
     public List<Servico> getAllServicos() {
         return servicoRepository.findAll();
     }
 
-    // Buscar serviço por ID
-    @GetMapping("/{id}")
-    public ResponseEntity<Servico> getServicoById(@PathVariable Long id) {
+    @Override
+    public ResponseEntity<Servico> getServicoById(Long id) {
         Optional<Servico> servico = servicoRepository.findById(id);
         return servico.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    // Buscar serviços por endereço do usuário
-    @GetMapping("/usuario-endereco")
-    @Transactional(readOnly = true)
+    @Override
     public List<Servico> getServicosByUsuarioPrestadorEndereco(@RequestParam String endereco) {
         return servicoRepository.findByUsuarioPrestadorEndereco(endereco);
     }
 
-    // Buscar serviços por categoria
-    @GetMapping("/categoria/{id}")
-    @Transactional(readOnly = true)
+    @Override
     public List<Servico> getServicosByCategoria(@PathVariable Long id) {
         Optional<Categoria> categoria = categoriaRepository.findById(id);
         return categoria.map(servicoRepository::findByCategoria).orElse(List.of());
     }
 
-    // Buscar serviços por valor entre um intervalo
-    @GetMapping("/valor")
+    @Override
     public List<Servico> getServicosByValor(@RequestParam double minValor, @RequestParam double maxValor) {
         return servicoRepository.findByValorBetween(minValor, maxValor);
     }
 
-    // Criar novo serviço
-    @PostMapping
-    @Transactional
-    public ResponseEntity<Servico> createServico(@RequestBody Servico servico) {
-        // Verificar se o ID da categoria foi enviado e se é válido
-        if (servico.getCategoria() == null || servico.getCategoria().getId() == null) {
-            return ResponseEntity.badRequest().body(null); // Categoria não informada ou inválida
-        }
-
-        Optional<Categoria> categoria = categoriaRepository.findById(servico.getCategoria().getId());
-        if (categoria.isEmpty()) {
-            return ResponseEntity.badRequest().body(null); // Categoria não encontrada
-        }
-
-        // Atribuir a categoria carregada ao serviço
-        servico.setCategoria(categoria.get());
-
-        // Salvar o serviço no banco
-        Servico novoServico = servicoRepository.save(servico);
-        return ResponseEntity.ok(novoServico);
-    }
-
-
-    // Atualizar serviço (suporte a atualização parcial)
-    @PutMapping("/{id}")
-    @Transactional
+    @Override
     public ResponseEntity<Servico> updateServico(@PathVariable Long id, @RequestBody Servico servicoAtualizado) {
         Optional<Servico> servicoExistente = servicoRepository.findById(id);
 
@@ -119,8 +138,7 @@ public class ServicoController {
         return ResponseEntity.notFound().build();
     }
 
-    // Deletar serviço
-    @DeleteMapping("/{id}")
+    @Override
     public ResponseEntity<Void> deleteServico(@PathVariable Long id) {
         if (servicoRepository.existsById(id)) {
             servicoRepository.deleteById(id);
