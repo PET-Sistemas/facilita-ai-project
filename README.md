@@ -1,4 +1,4 @@
-# 📡 Facilita Ai Backend 💕
+<img src="assets\Logo.png" alt="Logo Facilita Ai" width="200">
 
 > O projeto contempla uma API com serviços CRUD para as principais entidades
 > do site Facilita Ai, permitindo tratar requisições de forma organizada e eficiente,
@@ -55,18 +55,4 @@ public class GetpetApplication {
 1. execute o comando para subir a api e o banco de dados: ``` docker-compose up OU  docker-compose up api db```
 
 ## 5. Para acessar a documentação:
-1. Com a aplicação rodando, abra o navegador e entre no seguinte link : ``` (https://docs.spring.io/spring-boot/index.html) ```
-
-# BODYREQUEST USUARIO
-
-```JSON
-{
-  "nomeCompleto": "João da Silva",
-  "dataNascimento": "1990-05-15",
-  "endereco": "Rua das Flores, 123",
-  "cidade": "Campo Grande",
-  "uf": "MS",
-  "email": "joao.silva@example.com",
-  "telefone": "11987654321",
-  "senha": "senhaSegura123"
-}
+1. Com a aplicação rodando, abra o navegador e entre no seguinte link : ``` (http://localhost:8080/swagger-ui/index.html) ```
