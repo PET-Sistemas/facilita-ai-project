@@ -64,7 +64,7 @@ public interface IntUsuarioController {
                     examples = {@ExampleObject(
                             name = "Novo Usuário Exemplo João",
                             summary = "",
-                            description = "Usuário cadastrado com todos os campos e servicos em null.",
+                            description = "Usuário cadastrado com todos os campos preenchidos, mas serviços em null.",
                             value = "{" +
                                     "  \"id\": 7,\n" +
                                     "  \"nomeCompleto\": \"João da Silva\",\n" +
@@ -191,13 +191,13 @@ public interface IntUsuarioController {
             @Parameter(in = ParameterIn.PATH, name = "endereco", description = "Endereço ou parte do endereço do usuário", required = true)
         },
         responses = { 
-            @ApiResponse(responseCode = "200", description = "Usuário deletado com sucesso.", content = @Content(schema = @Schema(implementation = Usuario.class))),
+            @ApiResponse(responseCode = "200", description = "Usuário encontrado com sucesso.", content = @Content(schema = @Schema(implementation = Usuario.class))),
             @ApiResponse(responseCode = "400", description = "Endereço inválido.")
         }
     )
     public ResponseEntity<?> buscarPorEndereco(@RequestParam String endereco);
 
-    @PutMapping(path = "/")
+    @PutMapping
     @Operation(
         operationId = "putUsuario", 
         summary = "Atualizar um usuário", 
@@ -216,13 +216,13 @@ public interface IntUsuarioController {
                     name = "Exemplo de usuário",
                     summary = "JSON válido para atualização de usuário",
                     value = "{\n" +
-                            "  \"nomeCompleto\": \"João da Silva\",\n" +
+                            "  \"nomeCompleto\": \"João da Silva Ilva\",\n" +
                             "  \"dataNascimento\": \"1990-01-01\",\n" +
                             "  \"endereco\": \"Rua das Flores, 123\",\n" +
                             "  \"cidade\": \"Campo Grande\",\n" +
                             "  \"uf\": \"MS\",\n" +
                             "  \"email\": \"Tlq7t@example.com\",\n" +
-                            "  \"telefone\": \"(99) 99999-9999\",\n" +
+                            "  \"telefone\": \"67999998888\",\n" +
                             "  \"senha\": \"senha123\"\n" +
                             "}"
                 )
@@ -265,7 +265,7 @@ public interface IntUsuarioController {
     )
     public ResponseEntity<?> putUsuario(@RequestBody AtualizarUsuarioDTO newColaborador, @RequestParam Long id);
 
-    @DeleteMapping(path = "/")
+    @DeleteMapping
     @Operation(
         operationId = "deleteColaborador", 
         summary = "Deletar um usuário", 
@@ -274,21 +274,6 @@ public interface IntUsuarioController {
         parameters = {
             @Parameter(in = ParameterIn.PATH, name = "id", description = "ID do usuário a ser deletado", required = true)
         },
-        requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
-            description = "ID do usuário a ser deletado",
-            required = true,
-            content = @Content(
-                mediaType = "application/json",
-                schema = @Schema(implementation = Usuario.class),
-                examples = @ExampleObject(
-                    name = "Exemplo de ID",
-                    summary = "ID válido para deleção de usuário",
-                    value = "{\n" +
-                            "  \"id\": 1\n" +
-                            "}"
-                )
-            )
-        ),
         responses = { 
             @ApiResponse(responseCode = "200", description = "Usuário deletado com sucesso.", content = @Content(
                     examples = @ExampleObject(
