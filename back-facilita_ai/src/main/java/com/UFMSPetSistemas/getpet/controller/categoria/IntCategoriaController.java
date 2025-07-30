@@ -41,7 +41,7 @@ public interface IntCategoriaController {
                                     name = "Exemplo de categoria",
                                     summary = "JSON válido para criação de categoria",
                                     value = "{\n" +
-                                            "  \"titulo\": \"Categoria1\",\n" +
+                                            "  \"titulo\": \"Categoria1\"\n" +
                                             "}"
                             )
                     )
@@ -54,7 +54,7 @@ public interface IntCategoriaController {
                                     description = "Categoria cadastrada com todos os campos",
                                     value = "{" +
                                             "  \"id\": 1,\n" +
-                                            "  \"titulo\": \"Categoria1\",\n" +
+                                            "  \"titulo\": \"Categoria1\"\n" +
                                             "}")
                             },
                             mediaType = MediaType.APPLICATION_JSON_VALUE,
@@ -83,11 +83,11 @@ public interface IntCategoriaController {
                                     value = "[" +
                                             "  {" +
                                             "    \"id\": 1,\n" +
-                                            "    \"titulo\": \"Categoria1\",\n" +
+                                            "    \"titulo\": \"Categoria1\"\n" +
                                             "  },\n" +
                                             "  {\n" +
                                             "     \"id\": 2,\n" +
-                                            "    \"titulo\": \"Categoria2\",\n" +
+                                            "    \"titulo\": \"Categoria2\"\n" +
                                             "  }" +
                                             "]"
                             ),
@@ -122,7 +122,7 @@ public interface IntCategoriaController {
                     @ApiResponse(responseCode = "400", description = "ID inválido.")
             }
     )
-    public ResponseEntity<?> getCategoriaById(@PathVariable Long id);
+    public ResponseEntity<?> getCategoriaById(@RequestParam Long id);
 
     // Atualizar categoria (suporte a atualização parcial)
     @PutMapping
@@ -145,7 +145,7 @@ public interface IntCategoriaController {
                                     name = "Exemplo de categoria",
                                     summary = "JSON válido para atualização de categoria",
                                     value = "{" +
-                                            "  \"titulo\": \"Categoria1 Atualizada\",\n" +
+                                            "  \"titulo\": \"Categoria1 Atualizada\"\n" +
                                             "}"
                             )
                     )
@@ -158,7 +158,7 @@ public interface IntCategoriaController {
                                     description = "",
                                     value = "{" +
                                             "  \"id\": 1,\n" +
-                                            "  \"titulo\": \"Categoria1 Atualizada\",\n" +
+                                            "  \"titulo\": \"Categoria1 Atualizada\"\n" +
                                             "}"
                             ),
                                     @ExampleObject(
@@ -175,7 +175,7 @@ public interface IntCategoriaController {
                     @ApiResponse(responseCode = "422", description = "Erro ao atualizar categoria.")
             }
     )
-    public ResponseEntity<?> updateCategoria(@PathVariable Long id, @RequestBody AtualizarCategoriaDTO categoriaAtualizadaDTO);
+    public ResponseEntity<?> updateCategoria(@RequestParam Long id, @RequestBody AtualizarCategoriaDTO categoriaAtualizadaDTO);
 
     // Deletar categoria
     @DeleteMapping
