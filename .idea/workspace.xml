@@ -5,12 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="98b1ad3b-64e4-4725-a2e2-607fc6f66564" name="Changes" comment="Fix: Remoção de comentarios desnecessarios e formatação de repositorio de usuario pra funcionamento correto de controladora.&#10;Mudança no Dockerfile visando funcionamento correto">
-      <change afterPath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/controller/servico/dto/CadastroServicoDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/controller/ServicoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/controller/servico/ServicoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/GetpetApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/GetpetApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/controller/servico/IntServicoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/controller/servico/IntServicoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/controller/servico/ServicoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/controller/servico/ServicoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/controller/servico/dto/CadastroServicoDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/controller/servico/dto/CadastroServicoDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/controller/usuario/IntUsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/controller/usuario/IntUsuarioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/model/entities/Categoria.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/model/entities/Categoria.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/model/entities/Servico.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/model/entities/Servico.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-facilita_ai/target/classes/com/UFMSPetSistemas/getpet/controller/ServicoController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/model/entities/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/model/entities/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-facilita_ai/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-facilita_ai/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-facilita_ai/target/classes/com/UFMSPetSistemas/getpet/GetpetApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/target/classes/com/UFMSPetSistemas/getpet/GetpetApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-facilita_ai/target/classes/com/UFMSPetSistemas/getpet/model/entities/Categoria.class" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/target/classes/com/UFMSPetSistemas/getpet/model/entities/Categoria.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-facilita_ai/target/classes/com/UFMSPetSistemas/getpet/model/entities/Servico.class" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/target/classes/com/UFMSPetSistemas/getpet/model/entities/Servico.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,20 +71,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="feat-documentacao-servico-controller" />
-                    <option name="lastUsedInstant" value="1752332876" />
+                    <option name="branchName" value="feat/categoria-controller" />
+                    <option name="lastUsedInstant" value="1753832323" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="main" />
                     <option name="lastUsedInstant" value="1750369513" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="refinamento-usuario" />
-                    <option name="lastUsedInstant" value="1749481327" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="feat/swagger" />
-                    <option name="lastUsedInstant" value="1749480651" />
                   </RecentBranch>
                 </list>
               </option>
@@ -131,7 +132,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;Spring Boot.GetpetApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feat-documentacao-servico-controller&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feat/categoria-controller&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Dev/facilita-ai-project&quot;,
@@ -177,8 +178,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.26094.121" />
-        <option value="bundled-js-predefined-d6986cc7102b-b26f3e71634d-JavaScript-IU-251.26094.121" />
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.27812.49" />
+        <option value="bundled-js-predefined-d6986cc7102b-09060db00ec0-JavaScript-IU-251.27812.49" />
       </set>
     </attachedChunks>
   </component>
@@ -241,6 +242,8 @@
       <workItem from="1752250478642" duration="748000" />
       <workItem from="1752331173168" duration="4778000" />
       <workItem from="1752784130800" duration="8224000" />
+      <workItem from="1753894518033" duration="8357000" />
+      <workItem from="1753972299367" duration="2231000" />
     </task>
     <task id="LOCAL-00001" summary="Feat: Criação de repositorio para categoria">
       <option name="closed" value="true" />

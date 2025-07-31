@@ -23,9 +23,9 @@ public class Servico {
     @JoinColumn(name = "usuario_prestador_id")
     private Usuario usuarioPrestador;
     
-    @ManyToOne
-    @JoinColumn(name = "usuario_consumidor_id")
-    private Usuario usuarioConsumidor;
+//    @ManyToOne
+//    @JoinColumn(name = "usuario_consumidor_id")
+//    private Usuario usuarioConsumidor;
 
     @OneToMany(mappedBy = "servico", cascade = CascadeType.ALL)
 
@@ -36,18 +36,20 @@ public class Servico {
                    String descricao,
                    double valor,
                    Categoria categoria,
-                   Usuario usuarioPrestador,
-                   Usuario usuarioConsumidor
+                   Usuario usuarioPrestador
+                   //Usuario usuarioConsumidor
     ) {
         this.titulo = titulo;
         this.descricao = descricao;
         this.valor = valor;
         this.categoria = categoria;
         this.usuarioPrestador = usuarioPrestador;
-        this.usuarioConsumidor = usuarioConsumidor;
+        //this.usuarioConsumidor = usuarioConsumidor;
     }
 
     public Servico(){}
+
+    // GETTERS
 
     public Long getId() {
         return id;
@@ -57,52 +59,55 @@ public class Servico {
         return titulo;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
     public String getDescricao() {
         return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
     }
 
     public double getValor() {
         return valor;
     }
 
-    public void setValor(double valor) {
-        this.valor = valor;
-    }
-
     public List<PrestacaoServico> getAvaliacoes() {
         return avaliacoes;
     }
 
-    public void setAvaliacoes(List<PrestacaoServico> avaliacoes) {
-        this.avaliacoes = avaliacoes;
-    }
     public Categoria getCategoria() {
         return categoria;
+    }
+
+    public Usuario getUsuarioPrestador() {
+        return usuarioPrestador;
+    }
+
+    // SETTERS
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
+    }
+
+    public void setAvaliacoes(List<PrestacaoServico> avaliacoes) {
+        this.avaliacoes = avaliacoes;
     }
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
 
-    public Usuario getUsuario() {
-        return usuarioConsumidor;
-    }
+//    public Usuario getUsuario() {
+//        return usuarioConsumidor;
+//    }
 
-    public void setUsuario(Usuario usuarioConsumidor) {
-        this.usuarioConsumidor = usuarioConsumidor;
-    }
-
-    public Usuario getUsuarioPrestador() {
-        return usuarioPrestador;
-    }
+//    public void setUsuario(Usuario usuarioConsumidor) {
+//        this.usuarioConsumidor = usuarioConsumidor;
+//    }
 
     public void setUsuarioPrestador(Usuario usuarioPrestador) {
         this.usuarioPrestador = usuarioPrestador;

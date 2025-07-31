@@ -37,14 +37,14 @@ public class Usuario {
 
 	private String senha;
 
-	@OneToMany(mappedBy = "usuarioPrestador", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Servico> servicos;
-	
-	@OneToMany(mappedBy = "usuarioPrestador", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<PrestacaoServico> servicosPrestados;
-	
-	@OneToMany(mappedBy = "usuarioConsumidor", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<PrestacaoServico> servicosContratados;
+//	@OneToMany(mappedBy = "usuarioPrestador", cascade = CascadeType.ALL, orphanRemoval = true)
+//	private List<Servico> servicos;
+//
+//	@OneToMany(mappedBy = "usuarioPrestador", cascade = CascadeType.ALL, orphanRemoval = true)
+//	private List<PrestacaoServico> servicosPrestados;
+//
+//	@OneToMany(mappedBy = "usuarioConsumidor", cascade = CascadeType.ALL, orphanRemoval = true)
+//	private List<PrestacaoServico> servicosContratados;
 
 	/* CONSTRUTORES */
 	public Usuario(String nomeCompleto,
@@ -64,9 +64,9 @@ public class Usuario {
 		this.email = email;
 		this.telefone = telefone;
 		this.senha = senha;
-		this.servicos = null;
-		this.servicosPrestados = null;
-		this.servicosContratados = null;
+//		this.servicos = null;
+//		this.servicosPrestados = null;
+//		this.servicosContratados = null;
 	}
 
 	public Usuario(){} // Construtor sem argumentos para o framework
@@ -86,13 +86,13 @@ public class Usuario {
 		return id;
 	}
 
-	public List<Servico> getServicos() {
-		return servicos;
-	}
-
-	public List<PrestacaoServico> getServicosPrestados() {
-		return servicosPrestados;
-	}
+//	public List<Servico> getServicos() {
+//		return servicos;
+//	}
+//
+//	public List<PrestacaoServico> getServicosPrestados() {
+//		return servicosPrestados;
+//	}
 
 	public String getNomeCompleto() {
 		return nomeCompleto;
@@ -126,18 +126,18 @@ public class Usuario {
 		return senha;
 	}
 
-	public List<PrestacaoServico> getServicosContratados() {
-		return servicosContratados;
-	}
+//	public List<PrestacaoServico> getServicosContratados() {
+//		return servicosContratados;
+//	}
 
 	/* SETTERS */
-	public void setServicos(List<Servico> servicos) {
-		this.servicos = servicos;
-	}
-
-	public void setServicosPrestados(List<PrestacaoServico> servicosPrestados) {
-		this.servicosPrestados = servicosPrestados;
-	}
+//	public void setServicos(List<Servico> servicos) {
+//		this.servicos = servicos;
+//	}
+//
+//	public void setServicosPrestados(List<PrestacaoServico> servicosPrestados) {
+//		this.servicosPrestados = servicosPrestados;
+//	}
 
 	public void setNomeCompleto(String nomeCompleto) {
 		this.nomeCompleto = nomeCompleto;
@@ -171,9 +171,9 @@ public class Usuario {
 		this.senha = senha;
 	}
 
-	public void setServicosContratados(List<PrestacaoServico> servicosConsumidos) {
-		this.servicosContratados = servicosConsumidos;
-	}
+//	public void setServicosContratados(List<PrestacaoServico> servicosConsumidos) {
+//		this.servicosContratados = servicosConsumidos;
+//	}
 
 	/* MÉTODOS DA CLASSE */
 
