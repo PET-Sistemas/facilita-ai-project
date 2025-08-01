@@ -25,7 +25,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RequestMapping("/usuario")
-@Tag(name = "Usuário", description = "Endpoints para gerenciamento de usuários")
+@Tag(name = "Usuário", description = "Endpoints para gerenciamento de usuários.")
 public interface IntUsuarioController {
     
     @PostMapping(
@@ -74,10 +74,7 @@ public interface IntUsuarioController {
                                     "  \"uf\": \"MS\",\n" +
                                     "  \"email\": \"joao@example.com\",\n" +
                                     "  \"telefone\": \"67999998888\",\n" +
-                                    "  \"senha\": \"senha123\",\n" +
-                                    "  \"servicos\": null,\n" +
-                                    "  \"servicosPrestados\": null,\n" +
-                                    "  \"servicosContratados\": null\n" +
+                                    "  \"senha\": \"senha123\"\n" +
                                     "}")
                     },
                     mediaType = MediaType.APPLICATION_JSON_VALUE,
@@ -112,10 +109,7 @@ public interface IntUsuarioController {
                                     "    \"uf\": \"MS\",\n" +
                                     "    \"email\": \"joao@example.com\",\n" +
                                     "    \"telefone\": \"67999998888\",\n" +
-                                    "    \"senha\": \"senha123\",\n" +
-                                    "    \"servicos\": [],\n" +
-                                    "    \"servicosPrestados\": [],\n" +
-                                    "    \"servicosContratados\": []\n" +
+                                    "    \"senha\": \"senha123\"\n" +
                                     "  },\n" +
                                     "  {\n" +
                                     "    \"id\": 2,\n" +
@@ -126,10 +120,7 @@ public interface IntUsuarioController {
                                     "    \"uf\": \"MS\",\n" +
                                     "    \"email\": \"joao@example.com\",\n" +
                                     "    \"telefone\": \"67999998888\",\n" +
-                                    "    \"senha\": \"senha123\",\n" +
-                                    "    \"servicos\": [],\n" +
-                                    "    \"servicosPrestados\": [],\n" +
-                                    "    \"servicosContratados\": []\n" +
+                                    "    \"senha\": \"senha123\"\n" +
                                     "  }" +
                                     "]"
                             ),
@@ -243,10 +234,7 @@ public interface IntUsuarioController {
                                     "  \"uf\": \"MS\",\n" +
                                     "  \"email\": \"joao@example.com\",\n" +
                                     "  \"telefone\": \"67999998888\",\n" +
-                                    "  \"senha\": \"senha123\",\n" +
-                                    "  \"servicos\": [],\n" +
-                                    "  \"servicosPrestados\": [],\n" +
-                                    "  \"servicosContratados\": []\n" +
+                                    "  \"senha\": \"senha123\"\n" +
                                     "}"
                     ),
                             @ExampleObject(

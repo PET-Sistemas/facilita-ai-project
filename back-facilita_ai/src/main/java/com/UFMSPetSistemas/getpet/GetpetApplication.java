@@ -7,7 +7,7 @@ import org.springframework.core.env.AbstractEnvironment;
 @SpringBootApplication
 public class GetpetApplication {
 	public static void main(String[] args) {
-		System.setProperty(AbstractEnvironment.DEFAULT_PROFILES_PROPERTY_NAME, "production");
+		System.setProperty(AbstractEnvironment.DEFAULT_PROFILES_PROPERTY_NAME, "");
 		SpringApplication.run(GetpetApplication.class, args);
 	}
 

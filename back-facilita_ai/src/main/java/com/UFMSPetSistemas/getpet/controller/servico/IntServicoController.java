@@ -1,5 +1,6 @@
 package com.UFMSPetSistemas.getpet.controller.servico;
 
+import com.UFMSPetSistemas.getpet.controller.servico.dto.AtualizarServicoDTO;
 import com.UFMSPetSistemas.getpet.controller.servico.dto.CadastroServicoDTO;
 import com.UFMSPetSistemas.getpet.model.entities.Servico;
 import com.UFMSPetSistemas.getpet.model.entities.Usuario;
@@ -10,12 +11,15 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
+@RequestMapping("/servico")
+@Tag(name = "Serviço", description = "Endpoints para gerenciamento de serviços.")
 public interface IntServicoController {
     // Criar novo serviço
     @PostMapping(
@@ -42,8 +46,7 @@ public interface IntServicoController {
                                             "  \"descricao\": \"Servico legal.\",\n" +
                                             "  \"valor\": \"123\",\n" +
                                             "  \"categoriaId\": \"1\",\n" +
-                                            "  \"usuarioPrestadorId\": \"1\",\n" +
-                                            "  \"usuarioConsumidorId\": \"1\"\n" +
+                                            "  \"usuarioPrestadorId\": \"1\"\n" +
                                             "}"
                             )
                     )
@@ -60,8 +63,7 @@ public interface IntServicoController {
                                             "  \"descricao\": \"Servico legal.\",\n" +
                                             "  \"valor\": \"123\",\n" +
                                             "  \"categoriaId\": 1,\n" +
-                                            "  \"usuarioPrestadorId\": 1,\n" +
-                                            "  \"usuarioConsumidorId\": 1\n" +
+                                            "  \"usuarioPrestadorId\": 1\n" +
                                             "}")
                             },
                             mediaType = MediaType.APPLICATION_JSON_VALUE,
@@ -93,16 +95,14 @@ public interface IntServicoController {
                                             "    \"titulo\": \"Servico1\",\n" +
                                             "    \"descricao\": \"Servico legal.\",\n" +
                                             "    \"valor\": \"123\",\n" +
-                                            "    \"usuarioPrestadorId\": 1,\n" +
-                                            "    \"usuarioConsumidorId\": 1\n" +
+                                            "    \"usuarioPrestadorId\": 1\n" +
                                             "  },\n" +
                                             "  {\n" +
                                             "     \"id\": 2,\n" +
                                             "    \"titulo\": \"Servico2\",\n" +
                                             "    \"descricao\": \"Servico legal.\",\n" +
                                             "    \"valor\": \"123\",\n" +
-                                            "    \"usuarioPrestadorId\": 2,\n" +
-                                            "    \"usuarioConsumidorId\": 1\n" +
+                                            "    \"usuarioPrestadorId\": 2\n" +
                                             "  }" +
                                             "]"
                             ),
@@ -137,7 +137,7 @@ public interface IntServicoController {
                 @ApiResponse(responseCode = "400", description = "ID inválido.")
         }
     )
-    public ResponseEntity<?> getServicoById(@PathVariable Long id);
+    public ResponseEntity<?> getServicoById(@RequestParam Long id);
 
     // Buscar serviços por endereço do usuário
     @GetMapping("/usuario-endereco")
@@ -218,16 +218,15 @@ public interface IntServicoController {
                                             "  \"descricao\": \"Servico legal atualizado.\",\n" +
                                             "  \"valor\": \"123\",\n" +
                                             "  \"categoriaId\": 1,\n" +
-                                            "  \"usuarioPrestadorId\": 1,\n" +
-                                            "  \"usuarioConsumidorId\": 1\n" +
+                                            "  \"usuarioPrestadorId\": 1\n" +
                                             "}"
                             )
                     )
             ),
             responses = {
-                    @ApiResponse(responseCode = "200", description = "Usuário atualizado com sucesso.", content = @Content(
+                    @ApiResponse(responseCode = "200", description = "Servico atualizado com sucesso.", content = @Content(
                             examples = {@ExampleObject(
-                                    name = "Ex. 1: Dados do usuário atualizado",
+                                    name = "Ex. 1: Dados do servico atualizado",
                                     summary = "",
                                     description = "",
                                     value = "{" +
@@ -236,25 +235,24 @@ public interface IntServicoController {
                                             "  \"descricao\": \"Servico legal atualizado.\",\n" +
                                             "  \"valor\": \"123\",\n" +
                                             "  \"categoriaId\": 1,\n" +
-                                            "  \"usuarioPrestadorId\": 1,\n" +
-                                            "  \"usuarioConsumidorId\": 1\n" +
+                                            "  \"usuarioPrestadorId\": 1\n" +
                                             "}"
                             ),
                                     @ExampleObject(
                                             name = "Ex. 2: ID inválido",
                                             summary = "",
                                             description = "",
-                                            value = "Usuario com ID 0 não encontrado."
+                                            value = "Servico com ID 0 não encontrado."
                                     )
                             },
                             mediaType = MediaType.APPLICATION_JSON_VALUE,
                             schema = @Schema(implementation = Servico.class)
                     )
                     ),
-                    @ApiResponse(responseCode = "422", description = "Erro ao atualizar usuário.")
+                    @ApiResponse(responseCode = "422", description = "Erro ao atualizar servico.")
             }
     )
-    public ResponseEntity<?> updateServico(@PathVariable Long id, @RequestBody Servico servicoAtualizado);
+    public ResponseEntity<?> updateServico(@RequestParam Long id, @RequestBody AtualizarServicoDTO servicoAtualizadoDTO);
 
     // Deletar serviço
     @DeleteMapping
@@ -267,9 +265,9 @@ public interface IntServicoController {
                     @Parameter(in = ParameterIn.PATH, name = "id", description = "ID do serviço a ser deletado", required = true)
             },
             responses = {
-                    @ApiResponse(responseCode = "200", description = "Usuário deletado com sucesso.", content = @Content(
+                    @ApiResponse(responseCode = "200", description = "Serviço deletado com sucesso.", content = @Content(
                             examples = @ExampleObject(
-                                    name = "Usuário deletado com sucesso.",
+                                    name = "Serviço deletado com sucesso.",
                                     summary = "",
                                     description = "",
                                     value = "Sem retorno."

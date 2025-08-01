@@ -1,5 +1,6 @@
 package com.UFMSPetSistemas.getpet.controller.servico;
 
+import com.UFMSPetSistemas.getpet.controller.servico.dto.AtualizarServicoDTO;
 import com.UFMSPetSistemas.getpet.controller.servico.dto.CadastroServicoDTO;
 import com.UFMSPetSistemas.getpet.model.entities.Servico;
 import com.UFMSPetSistemas.getpet.model.entities.Categoria;
@@ -15,7 +16,6 @@ import java.util.Map;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/servico")
 public class ServicoController implements IntServicoController{
     private final ServicoRepository servicoRepository;
     private final CategoriaRepository categoriaRepository;
@@ -49,19 +49,18 @@ public class ServicoController implements IntServicoController{
                 return ResponseEntity.badRequest().body("Usuario prestador não encontrado!"); // Usuario não encontrado
             }
 
-            Optional<Usuario> usuarioConsumidor = usuarioRepository.findById(servicoDTO.usuarioConsumidorID());
-
-            if(usuarioConsumidor.isEmpty()){
-                return ResponseEntity.badRequest().body("Usuario consumidor não encontrado!"); // Usuario não encontrado
-            }
+//            Optional<Usuario> usuarioConsumidor = usuarioRepository.findById(servicoDTO.usuarioConsumidorID());
+//
+//            if(usuarioConsumidor.isEmpty()){
+//                return ResponseEntity.badRequest().body("Usuario consumidor não encontrado!"); // Usuario não encontrado
+//            }
 
             Servico servicoSalvo = this.servicoRepository.save(new Servico(
                     servicoDTO.titulo(),
                     servicoDTO.descricao(),
                     servicoDTO.valor(),
                     categoria.get(),
-                    usuarioPrestador.get(),
-                    usuarioConsumidor.get()
+                    usuarioPrestador.get()
             ));
 
             System.out.println("Servico salvo: " + servicoSalvo);
@@ -105,30 +104,28 @@ public class ServicoController implements IntServicoController{
     }
 
     @Override
-    public ResponseEntity<Servico> updateServico(@PathVariable Long id, @RequestBody Servico servicoAtualizado) {
+    public ResponseEntity<Servico> updateServico(@PathVariable Long id, @RequestBody AtualizarServicoDTO servicoAtualizadoDTO) {
         Optional<Servico> servicoExistente = servicoRepository.findById(id);
+        Optional<Categoria> categoria = categoriaRepository.findById(servicoAtualizadoDTO.categoriaID());
+        Optional<Usuario> usuarioPrestador = usuarioRepository.findById(servicoAtualizadoDTO.usuarioPrestadorID());
 
         if (servicoExistente.isPresent()) {
             Servico servico = servicoExistente.get();
 
             // Atualizar apenas os atributos enviados
-            if (servicoAtualizado.getTitulo() != null) {
-                servico.setTitulo(servicoAtualizado.getTitulo());
+            if (servicoAtualizadoDTO.titulo() != null) {
+                servico.setTitulo(servicoAtualizadoDTO.titulo());
             }
-            if (servicoAtualizado.getDescricao() != null) {
-                servico.setDescricao(servicoAtualizado.getDescricao());
+            if (servicoAtualizadoDTO.descricao() != null) {
+                servico.setDescricao(servicoAtualizadoDTO.descricao());
             }
-            if (servicoAtualizado.getValor() != 0) {
-                servico.setValor(servicoAtualizado.getValor());
+            if (servicoAtualizadoDTO.valor() != 0) {
+                servico.setValor(servicoAtualizadoDTO.valor());
             }
-            if (servicoAtualizado.getCategoria() != null && servicoAtualizado.getCategoria().getId() != null) {
-                Optional<Categoria> categoria = categoriaRepository.findById(servicoAtualizado.getCategoria().getId());
-                if (categoria.isPresent()) {
-                    servico.setCategoria(categoria.get());
-                } else {
-                    return ResponseEntity.badRequest().body(null);
-                }
-            }
+
+            categoria.ifPresent(servico::setCategoria);
+
+            usuarioPrestador.ifPresent(servico::setUsuarioPrestador);
 
             // Salvar alterações
             servicoRepository.save(servico);
