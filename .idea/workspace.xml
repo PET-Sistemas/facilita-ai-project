@@ -5,17 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="98b1ad3b-64e4-4725-a2e2-607fc6f66564" name="Changes" comment="Fix: Remoção de comentarios desnecessarios e formatação de repositorio de usuario pra funcionamento correto de controladora.&#10;Mudança no Dockerfile visando funcionamento correto">
-      <change afterPath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/controller/prestacaoServico/IntPrestacaoServicoController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/controller/prestacaoServico/PrestacaoServicoController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/controller/prestacaoServico/dto/AtualizarPrestacaoServicoDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/controller/prestacaoServico/dto/CadastrarPrestacaoServicoDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/controller/prestacaoServico/dto/PrestacaoServicoListDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/controller/servico/dto/ServicoSimplificadoDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/controller/usuario/dto/UsuarioSimplificadoDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/controller/PrestacaoServicoController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-facilita_ai/target/classes/com/UFMSPetSistemas/getpet/controller/PrestacaoServicoController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-facilita_ai/target/classes/com/UFMSPetSistemas/getpet/model/entities/PrestacaoServico.class" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/target/classes/com/UFMSPetSistemas/getpet/model/entities/PrestacaoServico.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/controller/prestacaoServico/IntPrestacaoServicoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/controller/prestacaoServico/IntPrestacaoServicoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/controller/prestacaoServico/PrestacaoServicoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/controller/prestacaoServico/PrestacaoServicoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/controller/prestacaoServico/dto/CadastrarPrestacaoServicoDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/controller/prestacaoServico/dto/CadastrarPrestacaoServicoDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/model/entities/Servico.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/model/entities/Servico.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/model/entities/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/src/main/java/com/UFMSPetSistemas/getpet/model/entities/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-facilita_ai/target/classes/com/UFMSPetSistemas/getpet/model/entities/Servico.class" beforeDir="false" afterPath="$PROJECT_DIR$/back-facilita_ai/target/classes/com/UFMSPetSistemas/getpet/model/entities/Servico.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +63,10 @@
             <RecentBranchesForRepo>
               <option name="branches">
                 <list>
+                  <RecentBranch>
+                    <option name="branchName" value="fix/correcoes-prestacao-servico" />
+                    <option name="lastUsedInstant" value="1755444222" />
+                  </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="feat/categoria-controller" />
                     <option name="lastUsedInstant" value="1754067860" />
@@ -126,9 +127,10 @@
     "RequestMappingsPanelWidth0": "75",
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "Spring Boot.GetpetApplication.executor": "Run",
-    "git-widget-placeholder": "#17 on Merging feat/categoria-controller",
+    "git-widget-placeholder": "fix/correcoes-prestacao-servico",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Dev/facilita-ai-project",
@@ -174,8 +176,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.27812.49" />
-        <option value="bundled-js-predefined-d6986cc7102b-09060db00ec0-JavaScript-IU-251.27812.49" />
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.23892.409" />
+        <option value="bundled-js-predefined-d6986cc7102b-e03c56caf84a-JavaScript-IU-252.23892.409" />
       </set>
     </attachedChunks>
   </component>
@@ -240,6 +242,10 @@
       <workItem from="1752784130800" duration="8224000" />
       <workItem from="1753894518033" duration="8357000" />
       <workItem from="1753972299367" duration="2231000" />
+      <workItem from="1754086750251" duration="1000" />
+      <workItem from="1754430032346" duration="1007000" />
+      <workItem from="1754600147035" duration="14000" />
+      <workItem from="1755443303298" duration="8525000" />
     </task>
     <task id="LOCAL-00001" summary="Feat: Criação de repositorio para categoria">
       <option name="closed" value="true" />

@@ -1,17 +1,9 @@
 package com.UFMSPetSistemas.getpet.model.entities;
 
-import com.UFMSPetSistemas.getpet.model.entities.Servico;
-import com.UFMSPetSistemas.getpet.model.entities.PrestacaoServico;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.persistence.*;
-
-import java.time.Instant;
 import java.util.Date;
-import java.util.List;
 import java.util.Objects;
-import java.util.Random;
 
 @Entity
 public class Usuario {
@@ -37,15 +29,6 @@ public class Usuario {
 
 	private String senha;
 
-//	@OneToMany(mappedBy = "usuarioPrestador", cascade = CascadeType.ALL, orphanRemoval = true)
-//	private List<Servico> servicos;
-//
-//	@OneToMany(mappedBy = "usuarioPrestador", cascade = CascadeType.ALL, orphanRemoval = true)
-//	private List<PrestacaoServico> servicosPrestados;
-//
-//	@OneToMany(mappedBy = "usuarioConsumidor", cascade = CascadeType.ALL, orphanRemoval = true)
-//	private List<PrestacaoServico> servicosContratados;
-
 	/* CONSTRUTORES */
 	public Usuario(String nomeCompleto,
 				   Date dataNascimento,
@@ -64,9 +47,6 @@ public class Usuario {
 		this.email = email;
 		this.telefone = telefone;
 		this.senha = senha;
-//		this.servicos = null;
-//		this.servicosPrestados = null;
-//		this.servicosContratados = null;
 	}
 
 	public Usuario(){} // Construtor sem argumentos para o framework
@@ -85,14 +65,6 @@ public class Usuario {
 	public Long getId() {
 		return id;
 	}
-
-//	public List<Servico> getServicos() {
-//		return servicos;
-//	}
-//
-//	public List<PrestacaoServico> getServicosPrestados() {
-//		return servicosPrestados;
-//	}
 
 	public String getNomeCompleto() {
 		return nomeCompleto;
@@ -126,19 +98,6 @@ public class Usuario {
 		return senha;
 	}
 
-//	public List<PrestacaoServico> getServicosContratados() {
-//		return servicosContratados;
-//	}
-
-	/* SETTERS */
-//	public void setServicos(List<Servico> servicos) {
-//		this.servicos = servicos;
-//	}
-//
-//	public void setServicosPrestados(List<PrestacaoServico> servicosPrestados) {
-//		this.servicosPrestados = servicosPrestados;
-//	}
-
 	public void setNomeCompleto(String nomeCompleto) {
 		this.nomeCompleto = nomeCompleto;
 	}
@@ -170,10 +129,6 @@ public class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-
-//	public void setServicosContratados(List<PrestacaoServico> servicosConsumidos) {
-//		this.servicosContratados = servicosConsumidos;
-//	}
 
 	/* MÉTODOS DA CLASSE */
 
