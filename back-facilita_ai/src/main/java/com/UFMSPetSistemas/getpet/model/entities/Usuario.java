@@ -6,6 +6,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.persistence.*;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.time.Instant;
 import java.util.Date;
@@ -63,7 +64,7 @@ public class Usuario {
 		this.uf = uf;
 		this.email = email;
 		this.telefone = telefone;
-		this.senha = senha;
+		setSenha(senha);
 //		this.servicos = null;
 //		this.servicosPrestados = null;
 //		this.servicosContratados = null;
@@ -167,8 +168,16 @@ public class Usuario {
 		this.telefone = telefone;
 	}
 
+	//Criptografa a senha antes de setar
 	public void setSenha(String senha) {
-		this.senha = senha;
+		//verifca se a senha não é nula ou vazia
+		if(senha != null && !senha.isEmpty()){ 
+			//Criar uma instância do BCryptPasswordEncoder
+			//objeto responsável por criptografar a senha
+			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+			//o método encode gera um hash da senha e armazena esse hash no atributo senha do usuário e salva no banco
+			this.senha = encoder.encode(senha);
+		} 
 	}
 
 //	public void setServicosContratados(List<PrestacaoServico> servicosConsumidos) {
