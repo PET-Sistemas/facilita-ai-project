@@ -1,7 +1,6 @@
 package com.UFMSPetSistemas.getpet.model.entities;
 
 import jakarta.persistence.*;
-import java.util.List;
 
 @Entity
 public class Servico {
@@ -22,14 +21,6 @@ public class Servico {
     @ManyToOne
     @JoinColumn(name = "usuario_prestador_id")
     private Usuario usuarioPrestador;
-    
-//    @ManyToOne
-//    @JoinColumn(name = "usuario_consumidor_id")
-//    private Usuario usuarioConsumidor;
-
-    @OneToMany(mappedBy = "servico", cascade = CascadeType.ALL)
-
-    private List<PrestacaoServico> avaliacoes; // Relacionamento "um para muitos"
 
     public Servico(
                    String titulo,
@@ -37,14 +28,12 @@ public class Servico {
                    double valor,
                    Categoria categoria,
                    Usuario usuarioPrestador
-                   //Usuario usuarioConsumidor
     ) {
         this.titulo = titulo;
         this.descricao = descricao;
         this.valor = valor;
         this.categoria = categoria;
         this.usuarioPrestador = usuarioPrestador;
-        //this.usuarioConsumidor = usuarioConsumidor;
     }
 
     public Servico(){}
@@ -65,10 +54,6 @@ public class Servico {
 
     public double getValor() {
         return valor;
-    }
-
-    public List<PrestacaoServico> getAvaliacoes() {
-        return avaliacoes;
     }
 
     public Categoria getCategoria() {
@@ -93,21 +78,9 @@ public class Servico {
         this.valor = valor;
     }
 
-    public void setAvaliacoes(List<PrestacaoServico> avaliacoes) {
-        this.avaliacoes = avaliacoes;
-    }
-
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
-
-//    public Usuario getUsuario() {
-//        return usuarioConsumidor;
-//    }
-
-//    public void setUsuario(Usuario usuarioConsumidor) {
-//        this.usuarioConsumidor = usuarioConsumidor;
-//    }
 
     public void setUsuarioPrestador(Usuario usuarioPrestador) {
         this.usuarioPrestador = usuarioPrestador;

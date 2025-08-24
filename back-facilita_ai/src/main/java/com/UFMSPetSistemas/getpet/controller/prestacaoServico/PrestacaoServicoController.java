@@ -18,17 +18,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
 import java.net.URI;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
 @CrossOrigin
 public class PrestacaoServicoController implements IntPrestacaoServicoController {
-
     @Autowired
     private PrestacaoServicoRepository prestacaoServicoRepository;
     @Autowired
@@ -38,11 +37,11 @@ public class PrestacaoServicoController implements IntPrestacaoServicoController
 
     @Override
     @Transactional
-    public ResponseEntity<PrestacaoServico> registrar(@RequestBody @Valid CadastrarPrestacaoServicoDTO dto) {
-        Usuario cliente = usuarioRepository.findById(dto.clienteId())
-                .orElseThrow(() -> new EntityNotFoundException("Cliente não encontrado com ID: " + dto.clienteId()));
-        Usuario prestador = usuarioRepository.findById(dto.prestadorId())
-                .orElseThrow(() -> new EntityNotFoundException("Prestador não encontrado com ID: " + dto.prestadorId()));
+    public ResponseEntity<PrestacaoServico> registrar(CadastrarPrestacaoServicoDTO dto) {
+        Usuario cliente = usuarioRepository.findById(dto.usuarioConsumidor())
+                .orElseThrow(() -> new EntityNotFoundException("Cliente não encontrado com ID: " + dto.usuarioConsumidor()));
+        Usuario prestador = usuarioRepository.findById(dto.usuarioPrestador())
+                .orElseThrow(() -> new EntityNotFoundException("Prestador não encontrado com ID: " + dto.usuarioPrestador()));
         Servico servico = servicoRepository.findById(dto.servicoId())
                 .orElseThrow(() -> new EntityNotFoundException("Serviço não encontrado com ID: " + dto.servicoId()));
 
@@ -55,6 +54,10 @@ public class PrestacaoServicoController implements IntPrestacaoServicoController
             novaPrestacao.setAvaliacao(dto.avaliacao());
         }
 
+        if (dto.avaliacaodesc() != null) {
+            novaPrestacao.setAvaliacaodesc(dto.avaliacaodesc());
+        }
+
         PrestacaoServico prestacaoSalva = prestacaoServicoRepository.save(novaPrestacao);
 
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
@@ -64,15 +67,22 @@ public class PrestacaoServicoController implements IntPrestacaoServicoController
     }
 
     @Override
-    @Transactional(readOnly = true)
-    public ResponseEntity<List<Servico>> listarPorAvaliacao(@RequestParam int avaliacaoMinima, @RequestParam int avaliacaoMaxima) {
+    public List<PrestacaoServico> getAll() { return prestacaoServicoRepository.findAll(); }
+
+    @Override
+    public ResponseEntity<PrestacaoServico> getPrestacaoServicoById(Long id) {
+        Optional<PrestacaoServico> prestacaoServico = prestacaoServicoRepository.findById(id);
+        return prestacaoServico.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @Override
+    public ResponseEntity<List<Servico>> listarPorAvaliacao(int avaliacaoMinima, int avaliacaoMaxima) {
         List<Servico> servicos = prestacaoServicoRepository.findServicosByAvaliacaoBetween(avaliacaoMinima, avaliacaoMaxima);
         return ResponseEntity.ok(servicos);
     }
 
     @Override
-    @Transactional(readOnly = true)
-    public ResponseEntity<List<PrestacaoServicoListDTO>> findByUsuarioPrestador(@PathVariable Long id) {
+    public ResponseEntity<List<PrestacaoServicoListDTO>> findByUsuarioPrestador(Long id) {
         List<PrestacaoServico> prestacoes = prestacaoServicoRepository.findByUsuarioPrestador(id);
 
         List<PrestacaoServicoListDTO> resultadoDTO = prestacoes.stream()
@@ -83,8 +93,7 @@ public class PrestacaoServicoController implements IntPrestacaoServicoController
     }
 
     @Override
-    @Transactional
-    public ResponseEntity<PrestacaoServico> atualizarAvaliacao(@PathVariable Long id, @RequestBody @Valid AtualizarPrestacaoServicoDTO dto) {
+    public ResponseEntity<PrestacaoServico> atualizarAvaliacao(Long id, AtualizarPrestacaoServicoDTO dto) {
         PrestacaoServico prestacao = prestacaoServicoRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Prestação de Serviço não encontrada com ID: " + id));
 
@@ -95,6 +104,15 @@ public class PrestacaoServicoController implements IntPrestacaoServicoController
         PrestacaoServico prestacaoAtualizada = prestacaoServicoRepository.save(prestacao);
         
         return ResponseEntity.ok(prestacaoAtualizada);
+    }
+
+    @Override
+    public ResponseEntity<Void> deletePrestacaoServico(Long id){
+        if (prestacaoServicoRepository.existsById(id)){
+            prestacaoServicoRepository.deleteById(id);
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.notFound().build();
     }
     
     // Método auxiliar para converter a entidade em um DTO de lista

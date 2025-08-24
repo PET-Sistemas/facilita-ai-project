@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/facilita-ai-project.iml" filepath="$PROJECT_DIR$/.idea/facilita-ai-project.iml" />
-      <module fileurl="file://$PROJECT_DIR$/getpet/getpet.iml" filepath="$PROJECT_DIR$/getpet/getpet.iml" />
     </modules>
   </component>
 </project>
